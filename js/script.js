@@ -316,11 +316,17 @@ document.addEventListener('DOMContentLoaded', () => {
     resetStarPicker();
     if (reviewComment) reviewComment.value = '';
     tagChips.forEach(chip => chip.classList.remove('active'));
-    if (reviewModal) reviewModal.classList.remove('hidden');
+    if (reviewModal) {
+      reviewModal.classList.remove('hidden');
+      document.body.classList.add('no-scroll');
+    }
   }
 
   function closeReviewModal() {
-    if (reviewModal) reviewModal.classList.add('hidden');
+    if (reviewModal) {
+      reviewModal.classList.add('hidden');
+      document.body.classList.remove('no-scroll');
+    }
   }
 
   if (btnCloseModal) btnCloseModal.addEventListener('click', closeReviewModal);
@@ -379,6 +385,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Fechar modal ao clicar fora (no backdrop)
+  document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) {
+        backdrop.classList.add('hidden');
+        document.body.classList.remove('no-scroll');
+      }
+    });
+  });
+
   const navItems = document.querySelectorAll('.bottom-nav .nav-item');
   navItems.forEach(item => {
     item.addEventListener('click', () => {
@@ -411,12 +427,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnNotifications && notificationsModal) {
     btnNotifications.addEventListener('click', () => {
       notificationsModal.classList.remove('hidden');
+      document.body.classList.add('no-scroll');
     });
   }
 
   if (btnCloseNotifModal && notificationsModal) {
     btnCloseNotifModal.addEventListener('click', () => {
       notificationsModal.classList.add('hidden');
+      document.body.classList.remove('no-scroll');
     });
   }
 
@@ -438,12 +456,14 @@ document.addEventListener('DOMContentLoaded', () => {
     navFavorites.addEventListener('click', (e) => {
       e.preventDefault();
       favoritesModal.classList.remove('hidden');
+      document.body.classList.add('no-scroll');
     });
   }
 
   if (btnCloseFavModal && favoritesModal) {
     btnCloseFavModal.addEventListener('click', () => {
       favoritesModal.classList.add('hidden');
+      document.body.classList.remove('no-scroll');
     });
   }
 
