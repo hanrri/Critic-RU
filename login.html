@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRU - Login & Cadastro | Critic RU UFPI</title>
+  <meta name="description" content="Faça login ou crie sua conta no CRU para avaliar as refeições e favoritar pratos do Restaurante Universitário da UFPI.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  
+
+</head>
+<body>
+
+  <div id="app" class="app-container">
+
+    <main class="main-content" style="padding-top: 16px;">
+
+      <a href="index.html" class="btn-back-home" style="color: var(--primary); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 12px; font-weight: 600; margin-bottom: 16px;">
+        <i data-lucide="arrow-left"></i>
+        <span>Voltar ao Cardápio</span>
+      </a>
+
+      <div class="auth-header">
+        <div class="auth-logo-box">
+          <i data-lucide="utensils-crossed"></i>
+        </div>
+        <h1 class="auth-title">Bem-vindo ao CRU</h1>
+        <p class="auth-subtitle">Acesse sua conta para avaliar e favoritar pratos da UFPI</p>
+      </div>
+
+      <div id="auth-tabs-wrapper" class="auth-tabs" role="tablist">
+        <button id="tab-login" class="auth-tab-btn active" role="tab" aria-selected="true">Entrar</button>
+        <button id="tab-register" class="auth-tab-btn" role="tab" aria-selected="false">Criar Conta</button>
+      </div>
+
+      <div class="auth-form-card">
+
+        <div id="auth-error-banner" class="auth-error-banner hidden" role="alert">
+          <i data-lucide="alert-circle"></i>
+          <span id="auth-error-text">E-mail ou senha incorretos. Tente novamente.</span>
+        </div>
+
+        <form id="form-login" onsubmit="handleAuthSubmit(event)">
+          
+          <div class="form-group">
+            <label for="login-email">E-mail ou Matrícula UFPI</label>
+            <div class="input-wrapper">
+              <i data-lucide="mail" class="input-icon"></i>
+              <input type="text" id="login-email" class="input-field" placeholder="aluno@ufpi.edu.br ou 2023..." required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Senha</label>
+            <div class="input-wrapper">
+              <i data-lucide="lock" class="input-icon"></i>
+              <input type="password" id="login-password" class="input-field" placeholder="Sua senha" required>
+              <button type="button" class="btn-toggle-pwd" onclick="togglePassword('login-password', this)">
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+            <a href="#" onclick="alert('Um e-mail de recuperação será enviado quando o backend estiver ativo.')" class="forgot-pwd-link">Esqueceu a senha?</a>
+          </div>
+
+          <button type="submit" class="btn-submit-auth">
+            <i data-lucide="log-in"></i>
+            <span>Entrar no CRU</span>
+          </button>
+
+        </form>
+
+        <form id="form-register" class="hidden" onsubmit="handleRegisterSubmit(event)">
+
+          <div class="form-group">
+            <label for="reg-name">Nome Completo</label>
+            <div class="input-wrapper">
+              <i data-lucide="user" class="input-icon"></i>
+              <input type="text" id="reg-name" class="input-field" placeholder="Ex: Henrique Silva" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-course">Curso / Centro</label>
+            <div class="input-wrapper">
+              <i data-lucide="graduation-cap" class="input-icon"></i>
+              <select id="reg-course" class="input-field" style="appearance: none;" required>
+                <option value="" disabled selected>Selecione seu curso...</option>
+                <option value="Engenharia de Software">Engenharia de Software (CCN)</option>
+                <option value="Ciência da Computação">Ciência da Computação (CCN)</option>
+                <option value="Medicina">Medicina (CCS)</option>
+                <option value="Direito">Direito (CCHL)</option>
+                <option value="Agronomia">Agronomia (CCA)</option>
+                <option value="Outro">Outro Curso / Servidor</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-matricula">Matrícula UFPI</label>
+            <div class="input-wrapper">
+              <i data-lucide="id-card" class="input-icon"></i>
+              <input type="text" id="reg-matricula" class="input-field" placeholder="Ex: 2023901234" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email">E-mail Institucional ou Pessoal</label>
+            <div class="input-wrapper">
+              <i data-lucide="mail" class="input-icon"></i>
+              <input type="email" id="reg-email" class="input-field" placeholder="seu-email@ufpi.edu.br" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-password">Criar Senha</label>
+            <div class="input-wrapper">
+              <i data-lucide="lock" class="input-icon"></i>
+              <input type="password" id="reg-password" class="input-field" placeholder="Mínimo 6 caracteres" minlength="6" required>
+              <button type="button" class="btn-toggle-pwd" onclick="togglePassword('reg-password', this)">
+                <i data-lucide="eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit-auth">
+            <i data-lucide="send"></i>
+            <span>Continuar e Enviar Código</span>
+          </button>
+
+        </form>
+
+        <form id="form-verify-code" class="hidden" onsubmit="handleVerifyCodeSubmit(event)">
+
+          <div class="verify-box-header">
+            <div class="verify-icon-circle">
+              <i data-lucide="mail-check"></i>
+            </div>
+            <h3>Verifique seu e-mail</h3>
+            <p>Enviamos um código de 6 dígitos para:<br><span id="target-email-display" class="target-email">aluno@ufpi.edu.br</span></p>
+          </div>
+
+          <div class="otp-input-group">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]*" required autocomplete="off">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]*" required autocomplete="off">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]*" required autocomplete="off">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]*" required autocomplete="off">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]*" required autocomplete="off">
+            <input type="text" class="otp-box" maxlength="1" inputmode="numeric" pattern="[0-9]*" required autocomplete="off">
+          </div>
+
+          <button type="submit" class="btn-submit-auth">
+            <i data-lucide="check-circle-2"></i>
+            <span>Confirmar e Ativar Conta</span>
+          </button>
+
+          <div class="resend-timer-box">
+            <span>Não recebeu o código? </span>
+            <button type="button" class="btn-resend-code" onclick="showError('Novo código enviado para seu e-mail!')">Reenviar Código</button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script>
+    
+    lucide.createIcons();
+
+    const tabLogin = document.getElementById('tab-login');
+    const tabRegister = document.getElementById('tab-register');
+    const authTabsWrapper = document.getElementById('auth-tabs-wrapper');
+    const formLogin = document.getElementById('form-login');
+    const formRegister = document.getElementById('form-register');
+    const formVerifyCode = document.getElementById('form-verify-code');
+    const targetEmailDisplay = document.getElementById('target-email-display');
+    const otpBoxes = document.querySelectorAll('.otp-box');
+    const authErrorBanner = document.getElementById('auth-error-banner');
+    const authErrorText = document.getElementById('auth-error-text');
+
+    function showError(message) {
+      if (authErrorBanner && authErrorText) {
+        authErrorText.textContent = message;
+        authErrorBanner.classList.remove('hidden');
+        lucide.createIcons();
+      }
+    }
+
+    function clearError() {
+      if (authErrorBanner) {
+        authErrorBanner.classList.add('hidden');
+      }
+    }
+
+    tabLogin.addEventListener('click', () => {
+      clearError();
+      tabLogin.classList.add('active');
+      tabRegister.classList.remove('active');
+      formLogin.classList.remove('hidden');
+      formRegister.classList.add('hidden');
+      formVerifyCode.classList.add('hidden');
+    });
+
+    tabRegister.addEventListener('click', () => {
+      clearError();
+      tabRegister.classList.add('active');
+      tabLogin.classList.remove('active');
+      formRegister.classList.remove('hidden');
+      formLogin.classList.add('hidden');
+      formVerifyCode.classList.add('hidden');
+    });
+
+    function togglePassword(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.innerHTML = '<i data-lucide="eye-off"></i>';
+      } else {
+        input.type = 'password';
+        btn.innerHTML = '<i data-lucide="eye"></i>';
+      }
+      lucide.createIcons();
+    }
+
+    function handleAuthSubmit(event) {
+      event.preventDefault();
+      clearError();
+
+      const email = document.getElementById('login-email').value;
+      const pass = document.getElementById('login-password').value;
+
+      if (pass === 'erro' || pass.length < 4) {
+        showError('E-mail ou senha incorretos. Tente novamente.');
+        document.getElementById('login-password').classList.add('error');
+        return;
+      }
+
+      window.location.href = 'perfil.html';
+    }
+
+    function handleRegisterSubmit(event) {
+      event.preventDefault();
+      clearError();
+
+      const userEmail = document.getElementById('reg-email').value || 'aluno@ufpi.edu.br';
+      if (targetEmailDisplay) targetEmailDisplay.textContent = userEmail;
+
+      formRegister.classList.add('hidden');
+      if (authTabsWrapper) authTabsWrapper.classList.add('hidden');
+      formVerifyCode.classList.remove('hidden');
+      
+      if (otpBoxes.length > 0) otpBoxes[0].focus();
+    }
+
+    otpBoxes.forEach((box, index) => {
+      box.addEventListener('input', (e) => {
+        box.classList.remove('error');
+        clearError();
+        if (box.value.length === 1 && index < otpBoxes.length - 1) {
+          otpBoxes[index + 1].focus();
+        }
+      });
+
+      box.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && box.value === '' && index > 0) {
+          otpBoxes[index - 1].focus();
+        }
+      });
+    });
+
+    function handleVerifyCodeSubmit(event) {
+      event.preventDefault();
+      clearError();
+
+      const code = Array.from(otpBoxes).map(b => b.value).join('');
+      
+      if (code.length < 6) {
+        showError('Por favor, preencha os 6 dígitos do código.');
+        return;
+      }
+
+      if (code === '000000') {
+        showError('Código incorreto ou expirado. Verifique seu e-mail e tente novamente.');
+        otpBoxes.forEach(b => b.classList.add('error'));
+        return;
+      }
+
+      alert(`Código ${code} confirmado! Conta ativada no CRU!`);
+      window.location.href = 'perfil.html';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRU - Gerenciamento do Catálogo | UFPI</title>
+  <meta name="description" content="Gerencie o catálogo completo de pratos, acompanhamentos, saladas e sobremesas do RU da UFPI.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  
+
+</head>
+<body>
+
+  <div id="app" class="app-container">
+
+    <main class="main-content" style="padding-top: 16px;">
+
+      <a href="admin.html" class="btn-back-home" style="color: var(--primary); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 12px; font-weight: 600; margin-bottom: 16px;">
+        <i data-lucide="arrow-left"></i>
+        <span>Voltar ao Painel do Administrador</span>
+      </a>
+
+      <section class="catalog-header">
+        <div class="catalog-title-group">
+          <h1>Gerenciamento do Catálogo</h1>
+          <p>Cadastre, edite ou exclua os pratos disponíveis no sistema</p>
+        </div>
+        <button class="btn-add-item-primary" onclick="openAddItemModal()">
+          <i data-lucide="plus-circle"></i>
+          <span>Novo Item</span>
+        </button>
+      </section>
+
+      <nav class="category-tabs" aria-label="Categorias de Alimentos">
+        <button class="category-tab active" data-cat="protein" onclick="switchCategory('protein', this)">
+          <i data-lucide="drumstick"></i>
+          <span>Proteínas</span>
+        </button>
+        <button class="category-tab" data-cat="veggie" onclick="switchCategory('veggie', this)">
+          <i data-lucide="leaf"></i>
+          <span>Vegetariano</span>
+        </button>
+        <button class="category-tab" data-cat="side" onclick="switchCategory('side', this)">
+          <i data-lucide="utensils-crossed"></i>
+          <span>Acompanhamentos</span>
+        </button>
+        <button class="category-tab" data-cat="salad" onclick="switchCategory('salad', this)">
+          <i data-lucide="salad"></i>
+          <span>Saladas</span>
+        </button>
+        <button class="category-tab" data-cat="dessert" onclick="switchCategory('dessert', this)">
+          <i data-lucide="apple"></i>
+          <span>Sobremesas</span>
+        </button>
+      </nav>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+        <span id="category-title" style="font-size: 14px; font-weight: 800; color: var(--text-main);">Proteínas Principais</span>
+        <span id="category-count" style="font-size: 11px; font-weight: 700; color: var(--text-muted);">5 itens cadastrados</span>
+      </div>
+
+      <div id="catalog-list">
+
+        <article class="catalog-item-card" data-category="protein">
+          <div class="item-main-info">
+            <h3>Galinhada Caseira</h3>
+            <div class="item-tags">
+              <span class="tag-mini vegan" style="background:#e0f2fe; color:#0369a1;">Média: 4.8 ⭐</span>
+            </div>
+          </div>
+          <div class="item-actions">
+            <button class="btn-action-icon" title="Editar Item" onclick="editItem('Galinhada Caseira')">
+              <i data-lucide="edit-3"></i>
+            </button>
+            <button class="btn-action-icon delete" title="Excluir Item" onclick="deleteItem(this, 'Galinhada Caseira')">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
+        </article>
+
+        <article class="catalog-item-card" data-category="protein">
+          <div class="item-main-info">
+            <h3>Isca de Frango Empanado</h3>
+            <div class="item-tags">
+              <span class="tag-mini contains">Contém Glúten</span>
+            </div>
+          </div>
+          <div class="item-actions">
+            <button class="btn-action-icon" title="Editar Item" onclick="editItem('Isca de Frango Empanado')">
+              <i data-lucide="edit-3"></i>
+            </button>
+            <button class="btn-action-icon delete" title="Excluir Item" onclick="deleteItem(this, 'Isca de Frango Empanado')">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
+        </article>
+
+        <article class="catalog-item-card" data-category="protein">
+          <div class="item-main-info">
+            <h3>Frango Grelhado ao Molho de Ervas</h3>
+            <div class="item-tags">
+              <span class="tag-mini vegan" style="background:#fef3c7; color:#92400e;">Popular</span>
+            </div>
+          </div>
+          <div class="item-actions">
+            <button class="btn-action-icon" title="Editar Item" onclick="editItem('Frango Grelhado ao Molho de Ervas')">
+              <i data-lucide="edit-3"></i>
+            </button>
+            <button class="btn-action-icon delete" title="Excluir Item" onclick="deleteItem(this, 'Frango Grelhado ao Molho de Ervas')">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
+        </article>
+
+        <article class="catalog-item-card" data-category="protein">
+          <div class="item-main-info">
+            <h3>Carne de Sol Acebolada</h3>
+            <div class="item-tags">
+              <span class="tag-mini vegan" style="background:#e0f2fe; color:#0369a1;">Média: 4.7 ⭐</span>
+            </div>
+          </div>
+          <div class="item-actions">
+            <button class="btn-action-icon" title="Editar Item" onclick="editItem('Carne de Sol Acebolada')">
+              <i data-lucide="edit-3"></i>
+            </button>
+            <button class="btn-action-icon delete" title="Excluir Item" onclick="deleteItem(this, 'Carne de Sol Acebolada')">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+    </main>
+
+    <div id="add-item-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+      <div class="modal-card-premium">
+        
+        <div class="modal-header-premium">
+          <h3 id="modal-item-title"><i data-lucide="edit-3" style="color: var(--primary);"></i><span>Editar Item</span></h3>
+          <button class="btn-close" onclick="closeAddItemModal()" aria-label="Fechar"><i data-lucide="x"></i></button>
+        </div>
+
+        <form id="form-add-catalog-item" onsubmit="saveCatalogItem(event)">
+          
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label for="item-category-select" class="form-label-admin">Categoria do Alimento</label>
+            <select id="item-category-select" class="input-admin-large" required>
+              <option value="protein">Proteína Principal</option>
+              <option value="veggie">Opção Vegetariana</option>
+              <option value="side">Acompanhamentos</option>
+              <option value="salad">Salada</option>
+              <option value="dessert">Sobremesa</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 14px;">
+            <label for="item-name-input" class="form-label-admin">Nome do Alimento / Prato</label>
+            <input type="text" id="item-name-input" class="input-admin-large" placeholder="Ex: Galinhada Caseira" required>
+          </div>
+
+          <div class="allergens-checkbox-group" style="margin-bottom: 20px; padding: 14px; background: var(--bg-app); border-radius: var(--radius-md);">
+            <span class="form-label-admin" style="margin-bottom: 8px; display: block;">Restrições / Alergênicos Fixos:</span>
+            <div class="checkbox-grid" style="gap: 12px;">
+              <label class="checkbox-item"><input type="checkbox" id="cat-gluten"><span>Contém Glúten</span></label>
+              <label class="checkbox-item"><input type="checkbox" id="cat-lactose"><span>Contém Lactose</span></label>
+              <label class="checkbox-item"><input type="checkbox" id="cat-soja"><span>Contém Soja</span></label>
+              <label class="checkbox-item"><input type="checkbox" id="cat-vegan"><span>Opção Vegana</span></label>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <button type="button" class="btn-secondary" onclick="closeAddItemModal()" style="flex: 1; min-height: 48px;">Cancelar</button>
+            <button type="submit" class="btn-publish-menu" style="flex: 1; min-height: 48px; border-radius: var(--radius-md);">
+              <i data-lucide="check"></i>
+              <span>Salvar Item</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    lucide.createIcons();
+
+    const categoryNames = {
+      protein: 'Proteínas Principais',
+      veggie: 'Opções Vegetarianas',
+      side: 'Acompanhamentos',
+      salad: 'Saladas',
+      dessert: 'Sobremesas'
+    };
+
+    const mockCategoryData = {
+      protein: [
+        { name: 'Galinhada Caseira', tags: ['Média: 4.8 ⭐'] },
+        { name: 'Isca de Frango Empanado', tags: ['Contém Glúten'] },
+        { name: 'Frango Grelhado ao Molho de Ervas', tags: ['Popular'] },
+        { name: 'Carne de Sol Acebolada', tags: ['Média: 4.7 ⭐'] },
+        { name: 'Bife de Panela ao Molho', tags: [] }
+      ],
+      veggie: [
+        { name: 'Arroz Colorido + Creme de Abóbora¹', tags: ['Contém Glúten', 'Contém Lactose'] },
+        { name: 'Estrogonofe de Grão de Bico', tags: ['Vegano'] },
+        { name: 'Escondidinho de Mandioca com Shimeji', tags: ['Vegano'] },
+        { name: 'Omelete de Forno com Legumes', tags: ['Contém Lactose'] }
+      ],
+      side: [
+        { name: 'Farofa Especial & Creme de Abóbora¹', tags: ['Contém Glúten', 'Contém Lactose'] },
+        { name: 'Arroz Branco, Feijão Caseiro e Macarrão', tags: [] },
+        { name: 'Arroz de Cuscuz & Feijão de Corda', tags: ['Vegano'] }
+      ],
+      salad: [
+        { name: 'Salada Crua (Acelga + Couve + Beterraba + Maçã)', tags: ['Vegano'] },
+        { name: 'Salada Tropical com Manga', tags: ['Vegano'] },
+        { name: 'Salada Verde com Vinagrete', tags: ['Vegano'] }
+      ],
+      dessert: [
+        { name: 'Melão Doce', tags: ['Fruta Fresca'] },
+        { name: 'Laranja Doce', tags: ['Fruta Fresca'] },
+        { name: 'Doce de Goiaba Caseiro', tags: [] },
+        { name: 'Banana Fresca', tags: ['Fruta Fresca'] }
+      ]
+    };
+
+    let activeCategory = 'protein';
+
+    function switchCategory(catKey, btn) {
+      activeCategory = catKey;
+      document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.getElementById('category-title').textContent = categoryNames[catKey];
+      renderCatalogList(catKey);
+    }
+
+    function renderCatalogList(catKey) {
+      const listContainer = document.getElementById('catalog-list');
+      const items = mockCategoryData[catKey] || [];
+      
+      document.getElementById('category-count').textContent = `${items.length} itens cadastrados`;
+
+      listContainer.innerHTML = items.map(item => `
+        <article class="catalog-item-card" data-category="${catKey}">
+          <div class="item-main-info">
+            <h3>${item.name}</h3>
+            <div class="item-tags">
+              ${item.tags.map(t => {
+                const isContains = t.includes('Contém');
+                const isVeg = t.includes('Vegano');
+                const badgeClass = isContains ? 'contains' : (isVeg ? 'vegan' : 'vegan');
+                return `<span class="tag-mini ${badgeClass}" style="${!isContains && !isVeg ? 'background:#e0f2fe; color:#0369a1;' : ''}">${t}</span>`;
+              }).join('')}
+            </div>
+          </div>
+          <div class="item-actions">
+            <button class="btn-action-icon edit" title="Editar Item" onclick="editItem('${item.name}')">
+              <i data-lucide="edit-3"></i>
+            </button>
+            <button class="btn-action-icon delete" title="Excluir Item" onclick="deleteItem(this, '${item.name}')">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
+        </article>
+      `).join('');
+
+      lucide.createIcons();
+    }
+
+    function openAddItemModal() {
+      document.getElementById('modal-item-title').innerHTML = '<i data-lucide="plus-circle" style="color: var(--primary);"></i><span>Novo Item no Catálogo</span>';
+      document.getElementById('item-name-input').value = '';
+      document.getElementById('item-category-select').value = activeCategory;
+      document.getElementById('add-item-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeAddItemModal() {
+      document.getElementById('add-item-modal').classList.add('hidden');
+    }
+
+    function saveCatalogItem(e) {
+      e.preventDefault();
+      const cat = document.getElementById('item-category-select').value;
+      const name = document.getElementById('item-name-input').value.trim();
+
+      if (!name) return;
+
+      let tags = [];
+      if (document.getElementById('cat-gluten').checked) tags.push('Contém Glúten');
+      if (document.getElementById('cat-lactose').checked) tags.push('Contém Lactose');
+      if (document.getElementById('cat-soja').checked) tags.push('Contém Soja');
+      if (document.getElementById('cat-vegan').checked) tags.push('Vegano');
+
+      if (!mockCategoryData[cat]) mockCategoryData[cat] = [];
+      mockCategoryData[cat].unshift({ name, tags });
+
+      closeAddItemModal();
+      switchCategory(cat, document.querySelector(`.category-tab[data-cat="${cat}"]`));
+      alert(`Sucesso! "${name}" foi salvo no catálogo!`);
+    }
+
+    function editItem(itemName) {
+      document.getElementById('modal-item-title').innerHTML = `<i data-lucide="edit-3" style="color: var(--primary);"></i><span>Editar Item</span>`;
+      document.getElementById('item-name-input').value = itemName;
+      document.getElementById('add-item-modal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function deleteItem(btn, itemName) {
+      if (confirm(`Deseja realmente remover "${itemName}" do catálogo?`)) {
+        const card = btn.closest('.catalog-item-card');
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0.9)';
+        card.style.transition = 'all 0.25s ease';
+        setTimeout(() => {
+          card.remove();
+          mockCategoryData[activeCategory] = mockCategoryData[activeCategory].filter(i => i.name !== itemName);
+          document.getElementById('category-count').textContent = `${mockCategoryData[activeCategory].length} itens cadastrados`;
+        }, 250);
+      }
+    }
+  </script>
+</body>
+</html>

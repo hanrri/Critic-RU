@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRU - Critic RU UFPI | Cardápio e Avaliações</title>
+    <meta name="description"
+        content="Acompanhe o cardápio diário dos Restaurantes Universitários da UFPI, avalie os pratos e receba alertas dos seus favoritos.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div id="app" class="app-container">
+
+        <header class="main-header">
+            <div class="header-top">
+                <div class="brand">
+                    <div class="brand-logo">
+                        <i data-lucide="utensils-crossed"></i>
+                    </div>
+                    <div class="brand-info">
+                        <h1 class="brand-title">CRU</h1>
+                        <span class="brand-subtitle">Critic RU • UFPI</span>
+                    </div>
+                </div>
+
+                <div class="user-action">
+                    <button id="btn-notifications" class="icon-btn" aria-label="Notificações de Favoritos">
+                        <i data-lucide="bell"></i>
+                        <span class="badge-dot"></span>
+                    </button>
+                    <a href="perfil.html" id="btn-login-profile" class="profile-avatar" aria-label="Perfil do Usuário">
+                        <i data-lucide="user"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ru-selector-wrapper">
+                <label for="ru-select" class="visually-hidden">Selecione o RU</label>
+                <div class="select-box">
+                    <i data-lucide="map-pin" class="select-icon"></i>
+                    <select id="ru-select" aria-label="Selecione o Restaurante Universitário">
+                        <option value="ru1-ccn" selected>RU 1 - CCN</option>
+                        <option value="ru2-rosadosventos">RU 2 - Espaço Rosa dos Ventos</option>
+                        <option value="ru3-cca">RU 3 - CCA</option>
+                    </select>
+                    <i data-lucide="chevron-down" class="select-arrow"></i>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+
+            <section class="date-meal-bar">
+                <div class="date-display">
+                    <i data-lucide="calendar"></i>
+                    <span id="current-date-text">Hoje, Segunda-feira</span>
+                </div>
+
+                <div class="meal-tabs" role="tablist" aria-label="Turnos de Refeição">
+                    <button id="tab-almoco" class="meal-tab active" role="tab" aria-selected="true"
+                        aria-controls="menu-section">
+                        <i data-lucide="sun"></i>
+                        <span>Almoço</span>
+                        <span class="meal-time">11:00 - 14:00</span>
+                    </button>
+                    <button id="tab-jantar" class="meal-tab" role="tab" aria-selected="false"
+                        aria-controls="menu-section">
+                        <i data-lucide="moon"></i>
+                        <span>Jantar</span>
+                        <span class="meal-time">17:00 - 19:00</span>
+                    </button>
+                </div>
+            </section>
+
+            <div class="ru-status-banner open">
+                <span class="status-indicator"></span>
+                <span id="ru-status-text">Restaurante Aberto para o Almoço</span>
+            </div>
+
+            <section id="menu-section" class="menu-section">
+                <div class="section-header">
+                    <h2 class="section-title">Cardápio do Dia</h2>
+                    <span class="menu-updated-tag"><i data-lucide="check-circle-2"></i> Atualizado</span>
+                </div>
+
+                <div id="menu-grid" class="menu-grid">
+
+                    <article class="dish-card" data-dish-id="1">
+                        <div class="dish-header">
+                            <span class="badge badge-protein">Proteína Principal</span>
+                            <button class="btn-favorite" aria-label="Favoritar Frango Grelhado" data-dish-id="1">
+                                <i data-lucide="heart"></i>
+                            </button>
+                        </div>
+
+                        <h3 class="dish-name">Frango Grelhado ao Molho de Ervas</h3>
+                        <p class="dish-description">Peito de frango temperado com ervas finas e grelhado na chapa.</p>
+
+                        <div class="dish-tags">
+                            <span class="tag-allergen">Sem Glúten</span>
+                            <span class="tag-allergen">Rico em Proteína</span>
+                        </div>
+
+                        <div class="dish-footer">
+                            <div class="dish-rating">
+                                <div class="stars">
+                                    <i data-lucide="star" class="filled"></i>
+                                    <span class="rating-score">4.7</span>
+                                </div>
+                                <span class="rating-count">(128 avaliações)</span>
+                            </div>
+                            <button class="btn-review" data-dish-id="1"
+                                data-dish-name="Frango Grelhado ao Molho de Ervas">
+                                <i data-lucide="message-square-plus"></i>
+                                <span>Avaliar</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="dish-card" data-dish-id="2">
+                        <div class="dish-header">
+                            <span class="badge badge-veggie">Opção Vegetariana</span>
+                            <button class="btn-favorite" aria-label="Favoritar Estrogonofe de Grão de Bico"
+                                data-dish-id="2">
+                                <i data-lucide="heart"></i>
+                            </button>
+                        </div>
+
+                        <h3 class="dish-name">Estrogonofe de Grão de Bico</h3>
+                        <p class="dish-description">Grão de bico cremoso com cogumelos e molho especial vegetal.</p>
+
+                        <div class="dish-tags">
+                            <span class="tag-allergen">Vegano</span>
+                            <span class="tag-allergen">Sem Lactose</span>
+                        </div>
+
+                        <div class="dish-footer">
+                            <div class="dish-rating">
+                                <div class="stars">
+                                    <i data-lucide="star" class="filled"></i>
+                                    <span class="rating-score">4.9</span>
+                                </div>
+                                <span class="rating-count">(94 avaliações)</span>
+                            </div>
+                            <button class="btn-review" data-dish-id="2" data-dish-name="Estrogonofe de Grão de Bico">
+                                <i data-lucide="message-square-plus"></i>
+                                <span>Avaliar</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="dish-card" data-dish-id="3">
+                        <div class="dish-header">
+                            <span class="badge badge-side">Acompanhamentos</span>
+                        </div>
+
+                        <h3 class="dish-name">Arroz Branco, Feijão Caseiro e Macarrão</h3>
+                        <p class="dish-description">Arroz agulhinha soltinho, feijão carioca temperado com alho e louro
+                            e macarrão al dente.</p>
+
+                        <div class="dish-footer">
+                            <div class="dish-rating">
+                                <div class="stars">
+                                    <i data-lucide="star" class="filled"></i>
+                                    <span class="rating-score">4.5</span>
+                                </div>
+                                <span class="rating-count">(76 avaliações)</span>
+                            </div>
+                            <button class="btn-review" data-dish-id="3"
+                                data-dish-name="Acompanhamentos (Arroz, Feijão e Macarrão)">
+                                <i data-lucide="message-square-plus"></i>
+                                <span>Avaliar</span>
+                            </button>
+                        </div>
+                    </article>
+
+                    <article class="dish-card" data-dish-id="4">
+                        <div class="dish-header">
+                            <span class="badge badge-dessert">Salada & Sobremesa</span>
+                        </div>
+
+                        <h3 class="dish-name">Salada Tropical & Melancia</h3>
+                        <p class="dish-description">Alface, tomate, cenoura ralada e milho. Sobremesa: Fatia de melancia
+                            fresca. Suco: Caju.</p>
+
+                        <div class="dish-footer">
+                            <div class="dish-rating">
+                                <div class="stars">
+                                    <i data-lucide="star" class="filled"></i>
+                                    <span class="rating-score">4.6</span>
+                                </div>
+                                <span class="rating-count">(62 avaliações)</span>
+                            </div>
+                            <button class="btn-review" data-dish-id="4" data-dish-name="Salada Tropical & Sobremesa">
+                                <i data-lucide="message-square-plus"></i>
+                                <span>Avaliar</span>
+                            </button>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <section id="recent-reviews-section" class="recent-reviews-section">
+                <div class="section-header">
+                    <h2 class="section-title">O que os alunos estão achando</h2>
+                </div>
+
+                <div class="reviews-carousel">
+
+                    <div class="review-card">
+                        <div class="review-user">
+                            <div class="user-avatar-small">H</div>
+                            <div class="user-info-text">
+                                <span class="user-name">Henrique S.</span>
+                                <span class="review-time">Há 15 minutos</span>
+                            </div>
+                            <div class="review-stars">⭐ 5.0</div>
+                        </div>
+                        <p class="review-text">"O frango hoje estava super temperado e muito macio! A fila andou rápido."</p>
+                        <div class="review-card-footer">
+                            <span class="review-dish-tag">Frango Grelhado</span>
+                            <button class="btn-like-review" aria-label="Curtir avaliação">
+                                <i data-lucide="thumbs-up"></i>
+                                <span class="like-count">12</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-user">
+                            <div class="user-avatar-small">M</div>
+                            <div class="user-info-text">
+                                <span class="user-name">Mariana C.</span>
+                                <span class="review-time">Há 40 minutos</span>
+                            </div>
+                            <div class="review-stars">⭐ 4.8</div>
+                        </div>
+                        <p class="review-text">"O estrogonofe vegetariano estava maravilhoso. Melancia bem docinha!"</p>
+                        <div class="review-card-footer">
+                            <span class="review-dish-tag">Estrogonofe de Grão de Bico</span>
+                            <button class="btn-like-review" aria-label="Curtir avaliação">
+                                <i data-lucide="thumbs-up"></i>
+                                <span class="like-count">8</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+
+        <div id="review-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true"
+            aria-labelledby="modal-title">
+            <div class="modal-card">
+
+                <div class="modal-header">
+                    <h3 id="modal-title" class="modal-title">Avaliar Prato</h3>
+                    <button id="btn-close-modal" class="btn-close" aria-label="Fechar Modal">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <p id="modal-dish-name" class="modal-dish-name">Frango Grelhado ao Molho de Ervas</p>
+
+                    <div class="star-rating-picker">
+                        <span class="picker-label">Sua nota:</span>
+                        <div id="star-input-group" class="star-input-group">
+                            <button class="star-btn" data-value="1" aria-label="1 estrela"><i
+                                    data-lucide="star"></i></button>
+                            <button class="star-btn" data-value="2" aria-label="2 estrelas"><i
+                                    data-lucide="star"></i></button>
+                            <button class="star-btn" data-value="3" aria-label="3 estrelas"><i
+                                    data-lucide="star"></i></button>
+                            <button class="star-btn" data-value="4" aria-label="4 estrelas"><i
+                                    data-lucide="star"></i></button>
+                            <button class="star-btn" data-value="5" aria-label="5 estrelas"><i
+                                    data-lucide="star"></i></button>
+                        </div>
+                        <span id="star-rating-text" class="rating-feedback-text">Selecione uma nota</span>
+                    </div>
+
+                    <div class="quick-tags-group">
+                        <span class="picker-label">Tags rápidas:</span>
+                        <div class="tags-container">
+                            <button type="button" class="tag-chip">😋 Muito Saboroso</button>
+                            <button type="button" class="tag-chip">🔥 Quentinho</button>
+                            <button type="button" class="tag-chip">🧂 Pouco Sal</button>
+                            <button type="button" class="tag-chip">⏳ Fila Demorada</button>
+                            <button type="button" class="tag-chip">⚡ Atendimento Rápido</button>
+                        </div>
+                    </div>
+
+                    <div class="comment-field-group">
+                        <label for="review-comment" class="picker-label">Comentário (opcional):</label>
+                        <textarea id="review-comment" rows="3"
+                            placeholder="Conte mais sobre a refeição, tempero, ponto da carne ou fila..."></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btn-cancel-review" class="btn-secondary">Cancelar</button>
+                    <button id="btn-submit-review" class="btn-primary">
+                        <i data-lucide="send"></i>
+                        <span>Enviar Review</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    <div id="notifications-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="notif-modal-title">
+      <div class="modal-card">
+        
+        <div class="modal-header">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="bell" style="color: var(--primary);"></i>
+            <h3 id="notif-modal-title" class="modal-title">Notificações</h3>
+          </div>
+          <button id="btn-close-notif-modal" class="btn-close" aria-label="Fechar Notificações">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <div class="modal-body" style="padding-top: 10px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+            <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Recentes</span>
+            <button id="btn-mark-all-read" style="background: transparent; border: none; font-size: 11px; font-weight: 700; color: var(--primary); cursor: pointer;">Marcar como lidas</button>
+          </div>
+
+          <div class="notifications-list">
+            
+            <div class="notif-item unread">
+              <div class="notif-icon fav">
+                <i data-lucide="heart"></i>
+              </div>
+              <div class="notif-content">
+                <p class="notif-text"><strong>Hoje tem Galinhada Caseira!</strong> Seu prato favorito está no cardápio do RU 1 (CCN).</p>
+                <span class="notif-time">Há 30 minutos</span>
+              </div>
+              <span class="unread-dot"></span>
+            </div>
+
+            <div class="notif-item unread">
+              <div class="notif-icon like">
+                <i data-lucide="thumbs-up"></i>
+              </div>
+              <div class="notif-content">
+                <p class="notif-text"><strong>Mariana C.</strong> curtiu sua avaliação sobre o Estrogonofe de Grão de Bico.</p>
+                <span class="notif-time">Há 2 horas</span>
+              </div>
+              <span class="unread-dot"></span>
+            </div>
+
+            <div class="notif-item">
+              <div class="notif-icon menu">
+                <i data-lucide="utensils"></i>
+              </div>
+              <div class="notif-content">
+                <p class="notif-text"><strong>Cardápio Atualizado:</strong> O cardápio do RU 2 (Rosa dos Ventos) foi publicado.</p>
+                <span class="notif-time">Há 4 horas</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="favorites-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="fav-modal-title">
+      <div class="modal-card">
+        
+        <div class="modal-header">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="heart" style="color: var(--accent-heart); fill: var(--accent-heart);"></i>
+            <h3 id="fav-modal-title" class="modal-title">Meus Pratos Favoritos</h3>
+          </div>
+          <button id="btn-close-fav-modal" class="btn-close" aria-label="Fechar Favoritos">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <div class="modal-body" style="padding-top: 10px;">
+          <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">Você receberá notificações quando estes pratos estiverem no cardápio:</p>
+
+          <div id="favorites-modal-list" class="favorites-modal-list">
+            
+            <div class="fav-modal-item">
+              <div class="fav-item-main">
+                <span class="badge badge-protein">Proteína Principal</span>
+                <h4 class="fav-item-title">Galinhada Caseira</h4>
+                <div class="fav-item-status serving">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>No cardápio de Hoje (RU 1, 2 e 3)</span>
+                </div>
+              </div>
+              <button class="btn-remove-fav-modal" aria-label="Remover dos favoritos">
+                <i data-lucide="heart" style="fill: var(--accent-heart); color: var(--accent-heart);"></i>
+              </button>
+            </div>
+
+            <div class="fav-modal-item">
+              <div class="fav-item-main">
+                <span class="badge badge-veggie">Opção Vegetariana</span>
+                <h4 class="fav-item-title">Estrogonofe de Grão de Bico</h4>
+                <div class="fav-item-status serving">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>No cardápio de Hoje (RU 1, 2 e 3)</span>
+                </div>
+              </div>
+              <button class="btn-remove-fav-modal" aria-label="Remover dos favoritos">
+                <i data-lucide="heart" style="fill: var(--accent-heart); color: var(--accent-heart);"></i>
+              </button>
+            </div>
+
+            <div class="fav-modal-item">
+              <div class="fav-item-main">
+                <span class="badge badge-protein">Proteína Principal</span>
+                <h4 class="fav-item-title">Carne de Sol Acebolada</h4>
+                <div class="fav-item-status not-serving">
+                  <i data-lucide="clock"></i>
+                  <span>Não servido hoje</span>
+                </div>
+              </div>
+              <button class="btn-remove-fav-modal" aria-label="Remover dos favoritos">
+                <i data-lucide="heart" style="fill: var(--accent-heart); color: var(--accent-heart);"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+        <nav class="bottom-nav" aria-label="Navegação Principal">
+            <a href="#menu-section" class="nav-item active" id="nav-menu">
+                <i data-lucide="utensils"></i>
+                <span>Cardápio</span>
+            </a>
+            <a href="minhas-avaliacoes.html" class="nav-item" id="nav-reviews">
+                <i data-lucide="star"></i>
+                <span>Avaliações</span>
+            </a>
+            <a href="#favorites" class="nav-item" id="nav-favorites">
+                <i data-lucide="heart"></i>
+                <span>Favoritos</span>
+            </a>
+            <a href="perfil.html" class="nav-item" id="nav-profile">
+                <i data-lucide="user"></i>
+                <span>Perfil</span>
+            </a>
+        </nav>
+
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

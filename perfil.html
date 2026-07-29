@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRU - Meu Perfil | Critic RU UFPI</title>
+  <meta name="description" content="Gerencie suas preferências de restaurante universitário, pratos favoritos e histórico de avaliações no CRU UFPI.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+  <div id="app" class="app-container">
+
+    <main class="main-content" style="padding-top: 16px;">
+      
+      <a href="index.html" class="btn-back-home" style="color: var(--primary);">
+        <i data-lucide="arrow-left"></i>
+        <span>Voltar ao Cardápio</span>
+      </a>
+
+      <section class="profile-header-card">
+        <div class="profile-info-main">
+          <div class="profile-avatar-large">H</div>
+          <div class="profile-user-details">
+            <h2>Henrique Silva</h2>
+            <p>Engenharia de Software • UFPI</p>
+            <span class="student-badge">Matrícula: 2023901234</span>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <a href="minhas-avaliacoes.html" class="stat-item" style="text-decoration: none; color: inherit; cursor: pointer;">
+            <span class="stat-number">14</span>
+            <span class="stat-label">Reviews ↗</span>
+          </a>
+          <div class="stat-item">
+            <span class="stat-number">5</span>
+            <span class="stat-label">Favoritos</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">4.8 ⭐</span>
+            <span class="stat-label">Média</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h3 class="settings-title">
+          <i data-lucide="star"></i>
+          <span>Minhas Avaliações</span>
+        </h3>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <span>Histórico de Reviews</span>
+            <small>Gerenciar, ordenar e excluir avaliações enviadas</small>
+          </div>
+          <a href="minhas-avaliacoes.html" style="background: var(--primary-light); color: var(--primary); padding: 8px 14px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+            <span>Ver Todas</span>
+            <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+          </a>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h3 class="settings-title">
+          <i data-lucide="map-pin"></i>
+          <span>RU de Preferência</span>
+        </h3>
+        
+        <div class="setting-item">
+          <div class="setting-info">
+            <span>Restaurante Padrão</span>
+            <small>Abre automaticamente ao carregar o cardápio</small>
+          </div>
+          <select id="user-pref-ru" style="padding: 6px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-weight: 600;">
+            <option value="ru1-ccn" selected>RU 1 - CCN</option>
+            <option value="ru2-rosadosventos">RU 2 - Rosa dos Ventos</option>
+            <option value="ru3-cca">RU 3 - CCA</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h3 class="settings-title">
+          <i data-lucide="bell"></i>
+          <span>Alertas de Pratos</span>
+        </h3>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span>Notificar Pratos Favoritos</span>
+            <small>Avisar quando meu prato favorito estiver no cardápio</small>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <span>Curtidas nas minhas Avaliações</span>
+            <small>Avisar quando alguém curtir minha avaliação</small>
+          </div>
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h3 class="settings-title">
+          <i data-lucide="heart"></i>
+          <span>Meus Pratos Favoritos</span>
+        </h3>
+
+        <div class="favorite-item-card">
+          <div class="fav-dish-info">
+            <h4>Galinhada Caseira</h4>
+            <span>Proteína Principal • RU 1, 2 e 3</span>
+          </div>
+          <button class="btn-remove-fav" title="Remover"><i data-lucide="heart-off"></i></button>
+        </div>
+
+        <div class="favorite-item-card">
+          <div class="fav-dish-info">
+            <h4>Estrogonofe de Grão de Bico</h4>
+            <span>Opção Vegetariana</span>
+          </div>
+          <button class="btn-remove-fav" title="Remover"><i data-lucide="heart-off"></i></button>
+        </div>
+
+        <div class="favorite-item-card">
+          <div class="fav-dish-info">
+            <h4>Carne de Sol Acebolada</h4>
+            <span>Proteína Principal</span>
+          </div>
+          <button class="btn-remove-fav" title="Remover"><i data-lucide="heart-off"></i></button>
+        </div>
+      </section>
+
+      <section class="settings-section" style="border: 1px solid #93c5fd; background: #eff6ff;">
+        <h3 class="settings-title" style="color: var(--primary);">
+          <i data-lucide="shield-check"></i>
+          <span>Área do Administrador</span>
+        </h3>
+        
+        <div class="setting-item" style="border-bottom: none;">
+          <div class="setting-info">
+            <span>Gestão de Cardápios</span>
+            <small>Publicar cardápio diário dos RUs da UFPI</small>
+          </div>
+          <a href="admin.html" style="background: var(--primary); color: #ffffff; padding: 8px 14px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+            <span>Acessar Painel</span>
+            <i data-lucide="chevron-right" style="width: 14px; height: 14px;"></i>
+          </a>
+        </div>
+      </section>
+
+      <button class="btn-logout" onclick="alert('Sessão encerrada.')">
+        <i data-lucide="log-out"></i>
+        <span>Sair da Conta</span>
+      </button>
+
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação Principal">
+      <a href="index.html#menu-section" class="nav-item">
+        <i data-lucide="utensils"></i>
+        <span>Cardápio</span>
+      </a>
+      <a href="minhas-avaliacoes.html" class="nav-item">
+        <i data-lucide="star"></i>
+        <span>Avaliações</span>
+      </a>
+      <a href="perfil.html" class="nav-item active">
+        <i data-lucide="user"></i>
+        <span>Perfil</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <script>
+    
+    lucide.createIcons();
+
+    document.querySelectorAll('.btn-remove-fav').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const card = btn.closest('.favorite-item-card');
+        card.style.opacity = '0';
+        card.style.transform = 'scale(0.9)';
+        card.style.transition = 'all 0.25s ease';
+        setTimeout(() => card.remove(), 250);
+      });
+    });
+  </script>
+</body>
+</html>

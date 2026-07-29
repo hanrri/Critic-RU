@@ -1,0 +1,12 @@
+# Logs e Arquivos Temporários do Sistema
+.DS_Store
+Thumbs.db
+*.log
+
+# Arquivos IDE e Editores
+.vscode/
+.idea/
+*.swp
+
+# Antigravity IDE Internal
+.gemini/

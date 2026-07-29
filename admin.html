@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRU - Painel do Administrador | UFPI</title>
+  <meta name="description" content="Painel de gestão e publicação de cardápios dos Restaurantes Universitários da UFPI.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  
+
+</head>
+<body>
+
+  <div id="app" class="app-container">
+
+    <main class="main-content" style="padding-top: 16px;">
+
+      <a href="index.html" class="btn-back-home" style="color: var(--primary); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 12px; font-weight: 600; margin-bottom: 16px;">
+        <i data-lucide="arrow-left"></i>
+        <span>Voltar ao App dos Alunos</span>
+      </a>
+
+      <section class="admin-header-card">
+        <span class="admin-badge">Acesso Administrativo</span>
+        <div class="admin-title-group">
+          <h1>Gestão de Cardápios RU</h1>
+          <p>Nutricionista / Gestão Geral de Restaurantes • UFPI</p>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 14px; flex-wrap: wrap; gap: 10px;">
+          <a href="gerenciar-itens.html" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); color: #ffffff; padding: 8px 14px; border-radius: var(--radius-md); font-size: 12px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i data-lucide="package-search" style="width: 16px; height: 16px;"></i>
+            <span>Gerenciar Catálogo de Pratos</span>
+          </a>
+        </div>
+
+        <div class="admin-quick-stats">
+          <div>
+            <span class="stat-box-val">3 RUs</span>
+            <span class="stat-box-lbl">Ativos no Sistema</span>
+          </div>
+          <div>
+            <span class="stat-box-val">100%</span>
+            <span class="stat-box-lbl">Publicados Hoje</span>
+          </div>
+          <div>
+            <span class="stat-box-val">1.420</span>
+            <span class="stat-box-lbl">Alunos Notificados</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="admin-form-section">
+        <div class="form-section-header">
+          <i data-lucide="calendar-plus"></i>
+          <h2>Publicar Novo Cardápio</h2>
+        </div>
+
+        <form id="form-publish-menu" onsubmit="handlePublishMenu(event)">
+
+          <div class="admin-grid-2 form-group">
+            <div>
+              <label for="admin-ru-select" class="form-label-admin">Restaurante (RU)</label>
+              <select id="admin-ru-select" class="input-admin" required>
+                <option value="ru1-ccn" selected>RU 1 - CCN</option>
+                <option value="ru2-rosadosventos">RU 2 - Rosa dos Ventos</option>
+                <option value="ru3-cca">RU 3 - CCA</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="admin-date" class="form-label-admin">Data</label>
+              <input type="date" id="admin-date" class="input-admin" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="admin-meal-type" class="form-label-admin">Turno da Refeição</label>
+            <select id="admin-meal-type" class="input-admin" required>
+              <option value="almoco" selected>☀️ Almoço (11:00 - 14:00)</option>
+              <option value="jantar">🌙 Jantar (17:00 - 19:00)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="dish-protein-select" class="form-label-admin">Proteína Principal</label>
+            <select id="dish-protein-select" class="input-admin" onchange="toggleCustomInput(this, 'box-protein-custom')">
+              <option value="Galinhada Caseira" selected>Galinhada Caseira</option>
+              <option value="Frango Grelhado ao Molho de Ervas">Frango Grelhado ao Molho de Ervas</option>
+              <option value="Carne de Sol Acebolada">Carne de Sol Acebolada</option>
+              <option value="Isca de Frango Empanado">Isca de Frango Empanado (Contém Glúten)</option>
+              <option value="Bife de Panela ao Molho">Bife de Panela ao Molho</option>
+              <option value="custom">➕ Outro (Cadastrar Novo Prato...)</option>
+            </select>
+            <div id="box-protein-custom" class="custom-dish-box hidden" style="margin-top: 8px; padding: 12px; background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+              <input type="text" id="dish-protein-custom" class="input-admin" placeholder="Digite o nome da nova proteína...">
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); margin-top: 8px; display: block;">Marque se este novo prato contém:</span>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; margin-bottom: 10px;">
+                <label class="checkbox-item"><input type="checkbox" id="prot-gluten"><span>Contém Glúten</span></label>
+                <label class="checkbox-item"><input type="checkbox" id="prot-lactose"><span>Contém Lactose</span></label>
+                <label class="checkbox-item"><input type="checkbox" id="prot-soja"><span>Contém Soja</span></label>
+              </div>
+              <button type="button" class="btn-confirm-dish" onclick="confirmNewDish('dish-protein-select', 'dish-protein-custom', 'box-protein-custom')" style="background: var(--primary); color: #fff; border: none; padding: 8px 12px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <i data-lucide="check-circle-2"></i>
+                <span>Confirmar e Selecionar Este Prato</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dish-veggie-select" class="form-label-admin">Opção Vegetariana</label>
+            <select id="dish-veggie-select" class="input-admin" onchange="toggleCustomInput(this, 'box-veggie-custom')">
+              <option value="Arroz Colorido + Creme de Abóbora¹" selected>Arroz Colorido + Creme de Abóbora¹ (Contém Glúten e Lactose)</option>
+              <option value="Estrogonofe de Grão de Bico">Estrogonofe de Grão de Bico (Vegano)</option>
+              <option value="Escondidinho de Mandioca com Shimeji">Escondidinho de Mandioca com Shimeji (Vegano)</option>
+              <option value="Omelete de Forno com Legumes">Omelete de Forno com Legumes (Contém Lactose)</option>
+              <option value="custom">➕ Outro (Cadastrar Novo...)</option>
+            </select>
+            <div id="box-veggie-custom" class="custom-dish-box hidden" style="margin-top: 8px; padding: 12px; background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+              <input type="text" id="dish-veggie-custom" class="input-admin" placeholder="Digite a nova opção vegetariana...">
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); margin-top: 8px; display: block;">Marque se este novo prato contém:</span>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; margin-bottom: 10px;">
+                <label class="checkbox-item"><input type="checkbox" id="veg-gluten"><span>Contém Glúten</span></label>
+                <label class="checkbox-item"><input type="checkbox" id="veg-lactose"><span>Contém Lactose</span></label>
+                <label class="checkbox-item"><input type="checkbox" id="veg-soja"><span>Contém Soja</span></label>
+              </div>
+              <button type="button" class="btn-confirm-dish" onclick="confirmNewDish('dish-veggie-select', 'dish-veggie-custom', 'box-veggie-custom')" style="background: var(--primary); color: #fff; border: none; padding: 8px 12px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <i data-lucide="check-circle-2"></i>
+                <span>Confirmar e Selecionar Este Prato</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dish-side-select" class="form-label-admin">Acompanhamentos</label>
+            <select id="dish-side-select" class="input-admin" onchange="toggleCustomInput(this, 'box-side-custom')">
+              <option value="Farofa Especial & Creme de Abóbora¹" selected>Farofa Especial & Creme de Abóbora¹ (Contém Glúten e Lactose)</option>
+              <option value="Arroz Branco, Feijão Caseiro e Macarrão">Arroz Branco, Feijão Caseiro e Macarrão</option>
+              <option value="Arroz de Cuscuz & Feijão de Corda">Arroz de Cuscuz & Feijão de Corda</option>
+              <option value="custom">➕ Outro (Cadastrar Novo...)</option>
+            </select>
+            <div id="box-side-custom" class="custom-dish-box hidden" style="margin-top: 8px; padding: 12px; background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+              <input type="text" id="dish-side-custom" class="input-admin" placeholder="Digite os acompanhamentos...">
+              <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); margin-top: 8px; display: block;">Marque se contém:</span>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; margin-bottom: 10px;">
+                <label class="checkbox-item"><input type="checkbox" id="side-gluten"><span>Contém Glúten</span></label>
+                <label class="checkbox-item"><input type="checkbox" id="side-lactose"><span>Contém Lactose</span></label>
+                <label class="checkbox-item"><input type="checkbox" id="side-soja"><span>Contém Soja</span></label>
+              </div>
+              <button type="button" class="btn-confirm-dish" onclick="confirmNewDish('dish-side-select', 'dish-side-custom', 'box-side-custom')" style="background: var(--primary); color: #fff; border: none; padding: 8px 12px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                <i data-lucide="check-circle-2"></i>
+                <span>Confirmar e Selecionar</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="admin-grid-2 form-group">
+            <div>
+              <label for="dish-salad-select" class="form-label-admin">Salada</label>
+              <select id="dish-salad-select" class="input-admin" onchange="toggleCustomInput(this, 'box-salad-custom')">
+                <option value="Salada Crua (Acelga + Couve + Beterraba + Maçã)" selected>Salada Crua (Acelga + Couve...)</option>
+                <option value="Salada Tropical">Salada Tropical</option>
+                <option value="Salada Verde com Vinagrete">Salada Verde com Vinagrete</option>
+                <option value="custom">➕ Outro (Cadastrar Novo...)</option>
+              </select>
+              <div id="box-salad-custom" class="custom-dish-box hidden" style="margin-top: 8px; padding: 12px; background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+                <input type="text" id="dish-salad-custom" class="input-admin" placeholder="Nome da salada...">
+                <button type="button" class="btn-confirm-dish" onclick="confirmNewDish('dish-salad-select', 'dish-salad-custom', 'box-salad-custom')" style="margin-top: 8px; background: var(--primary); color: #fff; border: none; padding: 8px 12px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Confirmar</span>
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label for="dish-dessert-select" class="form-label-admin">Sobremesa</label>
+              <select id="dish-dessert-select" class="input-admin" onchange="toggleCustomInput(this, 'box-dessert-custom')">
+                <option value="Melão (RU 1)" selected>Melão (RU 1)</option>
+                <option value="Laranja (RU 2)">Laranja (RU 2)</option>
+                <option value="Doce de Goiaba (RU 3)">Doce de Goiaba (RU 3)</option>
+                <option value="Banana Fresca">Banana Fresca</option>
+                <option value="custom">➕ Outro (Cadastrar Novo...)</option>
+              </select>
+              <div id="box-dessert-custom" class="custom-dish-box hidden" style="margin-top: 8px; padding: 12px; background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-sm);">
+                <input type="text" id="dish-dessert-custom" class="input-admin" placeholder="Nome da sobremesa...">
+                <button type="button" class="btn-confirm-dish" onclick="confirmNewDish('dish-dessert-select', 'dish-dessert-custom', 'box-dessert-custom')" style="margin-top: 8px; background: var(--primary); color: #fff; border: none; padding: 8px 12px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Confirmar</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="allergens-checkbox-group" style="background: #fffbebfb; border-color: #fef08a;">
+            <span class="form-label-admin" style="display: flex; align-items: center; gap: 6px; color: #b45309; margin-bottom: 2px;">
+              <i data-lucide="alert-triangle" style="width: 16px; height: 16px; color: #d97706;"></i>
+              <span>Alterações de Receita / Exceções do Dia (Opcional)</span>
+            </span>
+            <span style="font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 10px;">
+              Adicione se algum prato sofreu alteração no preparo fora do comum hoje (pode adicionar várias):
+            </span>
+            
+            <div class="admin-grid-2">
+              <div>
+                <label for="change-dish-category" class="form-label-admin">Prato que sofreu alteração</label>
+                <select id="change-dish-category" class="input-admin">
+                  <option value="Proteína Principal">Proteína Principal</option>
+                  <option value="Opção Vegetariana">Opção Vegetariana</option>
+                  <option value="Acompanhamentos">Acompanhamentos</option>
+                  <option value="Salada">Salada</option>
+                  <option value="Sobremesa">Sobremesa</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="form-label-admin">Alergênico Adicionado Hoje:</label>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px;">
+                  <label class="checkbox-item"><input type="checkbox" id="ex-check-gluten"><span>+ Contém Glúten</span></label>
+                  <label class="checkbox-item"><input type="checkbox" id="ex-check-lactose"><span>+ Contém Lactose</span></label>
+                  <label class="checkbox-item"><input type="checkbox" id="ex-check-soja"><span>+ Contém Soja</span></label>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" onclick="addDailyException()" style="margin-top: 10px; background: #d97706; color: #ffffff; border: none; padding: 8px 14px; border-radius: var(--radius-sm); font-size: 12px; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+              <i data-lucide="plus-circle" style="width: 14px; height: 14px;"></i>
+              <span>Adicionar Alteração de Hoje</span>
+            </button>
+
+            <div id="daily-exceptions-list" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px;">
+            </div>
+          </div>
+          </div>
+
+          <button type="submit" class="btn-publish-menu">
+            <i data-lucide="send"></i>
+            <span>Publicar Cardápio & Notificar Alunos</span>
+          </button>
+
+        </form>
+      </section>
+
+      <section class="admin-form-section">
+        <div class="form-section-header">
+          <i data-lucide="list-checks"></i>
+          <h2>Cardápios Publicados Recentemente</h2>
+        </div>
+
+        <div class="history-card-item">
+          <div class="history-info">
+            <h4>RU 1 - CCN (Almoço)</h4>
+            <span>Galinhada Caseira • Hoje, 27/07</span>
+            <span class="status-badge-pub">Publicado</span>
+          </div>
+          <div>
+            <button class="btn-icon-admin" title="Editar" onclick="alert('Editar cardápio')"><i data-lucide="edit-3"></i></button>
+            <button class="btn-icon-admin" title="Excluir" onclick="alert('Excluir cardápio')"><i data-lucide="trash-2"></i></button>
+          </div>
+        </div>
+
+        <div class="history-card-item">
+          <div class="history-info">
+            <h4>RU 2 - Rosa dos Ventos (Almoço)</h4>
+            <span>Galinhada Caseira (Sobremesa: Laranja) • Hoje</span>
+            <span class="status-badge-pub">Publicado</span>
+          </div>
+          <div>
+            <button class="btn-icon-admin" title="Editar"><i data-lucide="edit-3"></i></button>
+            <button class="btn-icon-admin" title="Excluir"><i data-lucide="trash-2"></i></button>
+          </div>
+        </div>
+
+        <div class="history-card-item">
+          <div class="history-info">
+            <h4>RU 3 - CCA (Almoço)</h4>
+            <span>Galinhada Caseira (Sobremesa: Goiaba) • Hoje</span>
+            <span class="status-badge-pub">Publicado</span>
+          </div>
+          <div>
+            <button class="btn-icon-admin" title="Editar"><i data-lucide="edit-3"></i></button>
+            <button class="btn-icon-admin" title="Excluir"><i data-lucide="trash-2"></i></button>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <script>
+    
+    lucide.createIcons();
+
+    document.getElementById('admin-date').valueAsDate = new Date();
+
+    function toggleCustomInput(selectEl, customBoxId) {
+      const customBox = document.getElementById(customBoxId);
+      if (!customBox) return;
+
+      if (selectEl.value === 'custom') {
+        customBox.classList.remove('hidden');
+        const textInput = customBox.querySelector('input[type="text"]');
+        if (textInput) textInput.focus();
+      } else {
+        customBox.classList.add('hidden');
+      }
+    }
+
+    function confirmNewDish(selectId, inputId, boxId) {
+      const select = document.getElementById(selectId);
+      const input = document.getElementById(inputId);
+      const box = document.getElementById(boxId);
+      
+      const newDishName = input.value.trim();
+      if (!newDishName) {
+        alert('Por favor, digite o nome do novo prato antes de confirmar.');
+        input.focus();
+        return;
+      }
+
+      let allergens = [];
+      const glutenCheck = box.querySelector('input[id$="-gluten"]');
+      const lactoseCheck = box.querySelector('input[id$="-lactose"]');
+      const sojaCheck = box.querySelector('input[id$="-soja"]');
+
+      if (glutenCheck && glutenCheck.checked) allergens.push('Contém Glúten');
+      if (lactoseCheck && lactoseCheck.checked) allergens.push('Contém Lactose');
+      if (sojaCheck && sojaCheck.checked) allergens.push('Contém Soja');
+
+      const allergenText = allergens.length > 0 ? ` (${allergens.join(', ')})` : '';
+      const fullLabel = `${newDishName}${allergenText}`;
+
+      const newOption = document.createElement('option');
+      newOption.value = fullLabel;
+      newOption.textContent = fullLabel;
+      newOption.selected = true;
+
+      select.insertBefore(newOption, select.lastElementChild);
+
+      box.classList.add('hidden');
+      alert(`Prato "${fullLabel}" foi adicionado e selecionado!`);
+    }
+
+    function addDailyException() {
+      const categorySelect = document.getElementById('change-dish-category');
+      const category = categorySelect.value;
+      
+      const gluten = document.getElementById('ex-check-gluten').checked;
+      const lactose = document.getElementById('ex-check-lactose').checked;
+      const soja = document.getElementById('ex-check-soja').checked;
+
+      let items = [];
+      if (gluten) items.push('Glúten');
+      if (lactose) items.push('Lactose');
+      if (soja) items.push('Soja');
+
+      if (items.length === 0) {
+        alert('Por favor, marque pelo menos um alergênico adicionado hoje.');
+        return;
+      }
+
+      const listContainer = document.getElementById('daily-exceptions-list');
+      const tag = document.createElement('span');
+      tag.className = 'exception-tag';
+      tag.style.cssText = 'background: #fef3c7; color: #92400e; border: 1px solid #fde68a; padding: 4px 10px; border-radius: 14px; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px;';
+      tag.innerHTML = `⚠️ <strong>${category}:</strong> + Contém ${items.join(', ')} <button type="button" onclick="this.parentElement.remove()" style="background: transparent; border: none; color: #92400e; font-weight: bold; cursor: pointer; padding: 0 2px;">✕</button>`;
+
+      listContainer.appendChild(tag);
+
+      document.getElementById('ex-check-gluten').checked = false;
+      document.getElementById('ex-check-lactose').checked = false;
+      document.getElementById('ex-check-soja').checked = false;
+    }
+
+    function handlePublishMenu(event) {
+      event.preventDefault();
+      
+      const ruSelect = document.getElementById('admin-ru-select');
+      const ruName = ruSelect.options[ruSelect.selectedIndex].text;
+      
+      const proteinSelect = document.getElementById('dish-protein-select');
+      const proteinVal = proteinSelect.value === 'custom' ? 'Novo Prato' : proteinSelect.value;
+      
+      const mealType = document.getElementById('admin-meal-type').value === 'almoco' ? 'Almoço' : 'Jantar';
+
+      const exceptionsCount = document.querySelectorAll('#daily-exceptions-list .exception-tag').length;
+      let changeMsg = exceptionsCount > 0 ? `\n\n⚠️ ${exceptionsCount} exceção(ões) de receita adicionada(s) ao cardápio de hoje!` : '';
+
+      alert(`Sucesso! Cardápio de ${mealType} para o ${ruName} foi publicado!\n\nProteína: ${proteinVal}${changeMsg}\n\nOs alunos que favoritaram este prato receberam uma notificação automatizada!`);
+
+      document.getElementById('form-publish-menu').reset();
+      document.getElementById('admin-date').valueAsDate = new Date();
+      document.getElementById('daily-exceptions-list').innerHTML = '';
+      document.querySelectorAll('.custom-dish-box').forEach(el => el.classList.add('hidden'));
+    }
+  </script>
+</body>
+</html>

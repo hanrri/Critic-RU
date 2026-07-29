@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRU - Minhas Avaliações | Critic RU UFPI</title>
+  <meta name="description" content="Veja o histórico de todas as suas avaliações enviadas nos Restaurantes Universitários da UFPI.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  
+
+</head>
+<body>
+
+  <div id="app" class="app-container">
+
+    <main class="main-content" style="padding-top: 16px;">
+
+      <a href="perfil.html" class="btn-back-home" style="color: var(--primary); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 12px; font-weight: 600; margin-bottom: 16px;">
+        <i data-lucide="arrow-left"></i>
+        <span>Voltar ao Perfil</span>
+      </a>
+
+      <div class="page-header">
+        <h1 class="page-title">Minhas Avaliações</h1>
+        <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;" id="total-count-badge">14 avaliações</span>
+      </div>
+
+      <div class="user-reviews-summary">
+        <div>
+          <span class="summary-stat-val">14</span>
+          <span class="summary-stat-lbl">Enviadas</span>
+        </div>
+        <div>
+          <span class="summary-stat-val">4.8 ⭐</span>
+          <span class="summary-stat-lbl">Média Dadas</span>
+        </div>
+        <div>
+          <span class="summary-stat-val">64 👍</span>
+          <span class="summary-stat-lbl">Curtidas Recebidas</span>
+        </div>
+      </div>
+
+      <div class="filter-bar">
+        <span class="filter-label">
+          <i data-lucide="arrow-up-down"></i>
+          <span>Ordenar por:</span>
+        </span>
+        <select id="sort-reviews" class="filter-select" aria-label="Ordenar avaliações">
+          <option value="recente" selected>Mais recentes (Default)</option>
+          <option value="antiga">Mais antigas</option>
+          <option value="votada">Mais votadas (Likes 👍)</option>
+        </select>
+      </div>
+
+      <div id="my-reviews-list">
+
+        <article class="my-review-card" data-timestamp="1722120000000" data-likes="24">
+          <div class="my-review-header">
+            <div>
+              <h3 class="my-review-dish-name">Galinhada Caseira</h3>
+              <span class="my-review-ru-tag">RU 1 - CCN • Almoço</span>
+            </div>
+            <span class="my-review-stars">⭐ 5.0</span>
+          </div>
+          <p class="my-review-comment">"O tempero estava excelente hoje! Galinhada muito macia e molhadinha."</p>
+          <div class="my-review-footer">
+            <span class="my-review-date">Hoje, às 12:30</span>
+            <div class="my-review-actions">
+              <span class="my-review-likes"><i data-lucide="thumbs-up"></i> 24 curtidas</span>
+              <button class="btn-delete-review" title="Excluir Avaliação" onclick="deleteReview(this)">
+                <i data-lucide="trash-2"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="my-review-card" data-timestamp="1722033600000" data-likes="18">
+          <div class="my-review-header">
+            <div>
+              <h3 class="my-review-dish-name">Estrogonofe de Grão de Bico</h3>
+              <span class="my-review-ru-tag">RU 2 - Rosa dos Ventos • Almoço</span>
+            </div>
+            <span class="my-review-stars">⭐ 4.8</span>
+          </div>
+          <p class="my-review-comment">"Excelente opção vegetariana. O creme de abóbora acompanhou muito bem."</p>
+          <div class="my-review-footer">
+            <span class="my-review-date">Ontem, às 12:15</span>
+            <div class="my-review-actions">
+              <span class="my-review-likes"><i data-lucide="thumbs-up"></i> 18 curtidas</span>
+              <button class="btn-delete-review" title="Excluir Avaliação" onclick="deleteReview(this)">
+                <i data-lucide="trash-2"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="my-review-card" data-timestamp="1721947200000" data-likes="12">
+          <div class="my-review-header">
+            <div>
+              <h3 class="my-review-dish-name">Carne de Sol Acebolada</h3>
+              <span class="my-review-ru-tag">RU 3 - CCA • Jantar</span>
+            </div>
+            <span class="my-review-stars">⭐ 4.5</span>
+          </div>
+          <p class="my-review-comment">"Muito gostoso! Mandioca bem cozida e carne saborosa."</p>
+          <div class="my-review-footer">
+            <span class="my-review-date">25 de Julho, às 18:40</span>
+            <div class="my-review-actions">
+              <span class="my-review-likes"><i data-lucide="thumbs-up"></i> 12 curtidas</span>
+              <button class="btn-delete-review" title="Excluir Avaliação" onclick="deleteReview(this)">
+                <i data-lucide="trash-2"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="my-review-card" data-timestamp="1721000000000" data-likes="10">
+          <div class="my-review-header">
+            <div>
+              <h3 class="my-review-dish-name">Frango Grelhado com Ervas</h3>
+              <span class="my-review-ru-tag">RU 1 - CCN • Almoço</span>
+            </div>
+            <span class="my-review-stars">⭐ 4.9</span>
+          </div>
+          <p class="my-review-comment">"Um dos melhores pratos da semana. Pouco sal e bem grelhado."</p>
+          <div class="my-review-footer">
+            <span class="my-review-date">15 de Julho, às 12:00</span>
+            <div class="my-review-actions">
+              <span class="my-review-likes"><i data-lucide="thumbs-up"></i> 10 curtidas</span>
+              <button class="btn-delete-review" title="Excluir Avaliação" onclick="deleteReview(this)">
+                <i data-lucide="trash-2"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação Principal">
+      <a href="index.html#menu-section" class="nav-item">
+        <i data-lucide="utensils"></i>
+        <span>Cardápio</span>
+      </a>
+      <a href="minhas-avaliacoes.html" class="nav-item active">
+        <i data-lucide="star"></i>
+        <span>Avaliações</span>
+      </a>
+      <a href="perfil.html" class="nav-item">
+        <i data-lucide="user"></i>
+        <span>Perfil</span>
+      </a>
+    </nav>
+
+    <div id="confirm-delete-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+      <div class="modal-card" style="text-align: center; padding: 24px;">
+        <div style="width: 52px; height: 52px; background: #fee2e2; color: #dc2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px auto;">
+          <i data-lucide="trash-2" style="width: 24px; height: 24px;"></i>
+        </div>
+        <h3 style="font-size: 16px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Excluir Avaliação?</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Esta ação não poderá ser desfeita. Sua nota e comentário serão removidos permanentemente do CRU.</p>
+        <div style="display: flex; gap: 10px;">
+          <button id="btn-cancel-delete" class="btn-secondary" style="flex: 1;">Cancelar</button>
+          <button id="btn-confirm-delete" class="btn-primary" style="flex: 1; background: #dc2626;">Excluir</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    
+    lucide.createIcons();
+
+    const sortSelect = document.getElementById('sort-reviews');
+    const reviewsList = document.getElementById('my-reviews-list');
+    const confirmDeleteModal = document.getElementById('confirm-delete-modal');
+    const btnCancelDelete = document.getElementById('btn-cancel-delete');
+    const btnConfirmDelete = document.getElementById('btn-confirm-delete');
+    let cardToDelete = null;
+
+    sortSelect.addEventListener('change', () => {
+      const sortValue = sortSelect.value;
+      const cards = Array.from(reviewsList.querySelectorAll('.my-review-card'));
+
+      cards.sort((a, b) => {
+        const timeA = parseInt(a.getAttribute('data-timestamp'));
+        const timeB = parseInt(b.getAttribute('data-timestamp'));
+        const likesA = parseInt(a.getAttribute('data-likes'));
+        const likesB = parseInt(b.getAttribute('data-likes'));
+
+        if (sortValue === 'recente') {
+          return timeB - timeA;
+        } else if (sortValue === 'antiga') {
+          return timeA - timeB;
+        } else if (sortValue === 'votada') {
+          return likesB - likesA;
+        }
+        return 0;
+      });
+
+      cards.forEach(card => reviewsList.appendChild(card));
+    });
+
+    function deleteReview(btn) {
+      cardToDelete = btn.closest('.my-review-card');
+      if (confirmDeleteModal) {
+        confirmDeleteModal.classList.remove('hidden');
+      }
+    }
+
+    if (btnCancelDelete && confirmDeleteModal) {
+      btnCancelDelete.addEventListener('click', () => {
+        cardToDelete = null;
+        confirmDeleteModal.classList.add('hidden');
+      });
+    }
+
+    if (btnConfirmDelete && confirmDeleteModal) {
+      btnConfirmDelete.addEventListener('click', () => {
+        if (cardToDelete) {
+          cardToDelete.style.opacity = '0';
+          cardToDelete.style.transform = 'scale(0.9)';
+          cardToDelete.style.transition = 'all 0.25s ease';
+          setTimeout(() => {
+            cardToDelete.remove();
+            updateTotalCount();
+            cardToDelete = null;
+          }, 250);
+        }
+        confirmDeleteModal.classList.add('hidden');
+      });
+    }
+
+    function updateTotalCount() {
+      const remaining = reviewsList.querySelectorAll('.my-review-card').length;
+      document.getElementById('total-count-badge').textContent = `${remaining} avaliações`;
+    }
+  </script>
+</body>
+</html>
