@@ -173,15 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const ruData = menuData[ruKey] || menuData['ru1-ccn'];
 
   const ruDetailTitle = document.getElementById('ru-detail-title');
-  const ruDetailSub = document.getElementById('ru-detail-sub');
-  const ruDetailCampus = document.getElementById('ru-detail-campus');
   const ruDetailScore = document.getElementById('ru-detail-score');
   const ruDetailCount = document.getElementById('ru-detail-count');
   const ruMenuItemsList = document.getElementById('ru-menu-items-list');
 
   if (ruDetailTitle) ruDetailTitle.textContent = ruData.name;
-  if (ruDetailSub) ruDetailSub.textContent = `Restaurante Universitário • UFPI`;
-  if (ruDetailCampus) ruDetailCampus.textContent = ruData.campus;
   if (ruDetailScore) ruDetailScore.textContent = `${ruData.score} ⭐`;
   if (ruDetailCount) ruDetailCount.textContent = `${ruData.count} avaliações`;
 
