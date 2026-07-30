@@ -2075,6 +2075,33 @@ body.no-scroll {
   border-bottom: none;
 }
 
+.btn-pill-manage {
+  background: #fee2e2;
+  color: #dc2626;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+.btn-pill-manage svg,
+.btn-pill-manage i {
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .setting-info span {
   font-size: 13px;
   font-weight: 600;
