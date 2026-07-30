@@ -83,10 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <!-- Prato Servido no Dia -->
-          <div style="background: var(--bg-app); border-radius: var(--radius-md); padding: 12px; margin-bottom: 14px; border: 1px solid var(--border-color);">
-            <span class="badge badge-protein" style="font-size: 10px; font-weight: 700;">Proteína: ${ru.protein}</span>
-            <p style="font-size: 12px; color: var(--text-main); margin-top: 6px; font-weight: 600;">🌱 Vegetariano: ${ru.veggie}</p>
-            <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">🍚 Acompanhamentos: ${ru.side} • 🥗 Sobremesa: ${ru.dessert}</p>
+          <div style="background: var(--bg-app); border-radius: var(--radius-md); padding: 12px; margin-bottom: 14px; border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 4px;">
+            <div style="font-size: 13px; font-weight: 700; color: var(--text-main);">
+              <span style="color: var(--text-muted); font-weight: 600;">Proteína:</span> ${ru.protein}
+            </div>
+            <div style="font-size: 13px; font-weight: 700; color: var(--text-main);">
+              <span style="color: var(--text-muted); font-weight: 600;">Vegetariano:</span> ${ru.veggie}
+            </div>
+            <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); margin-top: 2px;">
+              <span>Acompanhamentos:</span> ${ru.side} • <span>Sobremesa:</span> ${ru.dessert}
+            </div>
           </div>
 
           <!-- Botão para Ver Cardápio & Todas as Avaliações -->
