@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 101,
           type: 'protein',
           badge: 'Proteína Principal',
-          name: 'Galinhada Caseira',
-          desc: 'Prato tradicional com arroz cozido, frango desfiado temperado e ervas.',
+          name: 'Frango à Teriaky',
+          desc: 'Tiras de peito de frango refogadas ao molho teriaky oriental.',
           score: 4.8,
           count: 142,
           tags: [
@@ -42,34 +42,34 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 102,
           type: 'veggie',
           badge: 'Opção Vegetariana',
-          name: 'Arroz Colorido + Creme de Abóbora¹',
-          desc: 'Arroz soltinho com milho e ervilha acompanhado de creme de abóbora cremoso.',
+          name: 'Grão de Bico à Primavera (Vegetariano)',
+          desc: 'Grão de bico refogado com milho, pimentões coloridos e ervas frescas.',
           score: 4.9,
           count: 87,
           tags: [
             { label: '🌱 Vegetariano', type: 'free' },
-            { label: '⚠️ Contém Glúten', type: 'contains' },
-            { label: '⚠️ Contém Lactose', type: 'contains' }
+            { label: 'Sem Glúten', type: 'free' },
+            { label: 'Sem Lactose', type: 'free' }
           ]
         },
         {
           id: 103,
           type: 'side',
           badge: 'Acompanhamentos',
-          name: 'Farofa Especial & Feijão Carioca',
-          desc: 'Farofa de mandioca crocante e feijão carioca temperado.',
+          name: 'Arroz, Feijão com Batata Doce & Farofa',
+          desc: 'Arroz soltinho, feijão caseiro cozido com batata doce e farofa temperada.',
           score: 4.6,
           count: 65,
           tags: [
-            { label: '⚠️ Contém Glúten', type: 'contains' }
+            { label: 'Sem Glúten', type: 'free' }
           ]
         },
         {
           id: 104,
           type: 'dessert',
           badge: 'Salada & Sobremesa',
-          name: 'Salada Crua & Melão Fresco',
-          desc: 'Salada: Acelga + Couve + Beterraba + Maçã. Sobremesa: Fatia de Melão.',
+          name: 'Salada Crua & Banana',
+          desc: 'Salada: Repolho Verde + Repolho Roxo + Manga + Passas + Salsa. Sobremesa: Banana.',
           score: 4.7,
           count: 53,
           tags: [
@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 105,
           type: 'protein',
           badge: 'Proteína Principal',
-          name: 'Carne de Sol Acebolada com Mandioca',
-          desc: 'Carne de sol trançada, refogada na cebola com mandioca cozida.',
+          name: 'Frango à Teriaky',
+          desc: 'Tiras de peito de frango refogadas ao molho teriaky oriental.',
           score: 4.8,
           count: 118,
           tags: [
@@ -96,13 +96,25 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 106,
           type: 'veggie',
           badge: 'Opção Vegetariana',
-          name: 'Omelete de Forno com Legumes',
-          desc: 'Omelete macio com tomate, pimentão, cheiro-verde e queijo leve.',
+          name: 'Grão de Bico à Primavera (Vegetariano)',
+          desc: 'Grão de bico refogado com pimentão, milho e salsa.',
           score: 4.6,
           count: 72,
           tags: [
             { label: '🌱 Vegetariano', type: 'free' },
-            { label: '⚠️ Contém Lactose', type: 'contains' }
+            { label: 'Sem Glúten', type: 'free' }
+          ]
+        },
+        {
+          id: 107,
+          type: 'side',
+          badge: 'Acompanhamentos & Sobremesa',
+          name: 'Arroz, Farofa & Melancia',
+          desc: 'Arroz soltinho, farofa crocante e fatia de melancia fresca de sobremesa.',
+          score: 4.7,
+          count: 60,
+          tags: [
+            { label: 'Sem Glúten', type: 'free' }
           ]
         }
       ]
@@ -115,40 +127,37 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 201,
           type: 'protein',
           badge: 'Proteína Principal',
-          name: 'Frango Assado com Ervas & Batata Doce',
-          desc: 'Coxa e sobrecoxa assada ao forno com ervas finas e batata doce.',
+          name: 'Frango à Teriaky',
+          desc: 'Peito de frango suculento ao molho teriaky especial.',
           score: 4.7,
           count: 130,
           tags: [
             { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' },
-            { label: 'Rico em Proteína', type: 'neutral' }
+            { label: 'Sem Lactose', type: 'free' }
           ]
         },
         {
           id: 202,
           type: 'veggie',
           badge: 'Opção Vegetariana',
-          name: 'Lasanha de Abobrinha com Queijo Branco',
-          desc: 'Camadas de abobrinha grelhada com molho de tomate caseiro e ricota.',
+          name: 'Grão de Bico à Primavera (Vegetariano)',
+          desc: 'Grão de bico com legumes e ervas finas.',
           score: 4.8,
           count: 95,
           tags: [
-            { label: '🌱 Vegetariano', type: 'free' },
-            { label: '⚠️ Contém Lactose', type: 'contains' }
+            { label: '🌱 Vegetariano', type: 'free' }
           ]
         },
         {
           id: 203,
           type: 'dessert',
           badge: 'Salada & Sobremesa',
-          name: 'Salada de Folhas & Laranja Fresca',
-          desc: 'Salada verde com tomate e vinagrete. Sobremesa: Laranja fatiada.',
+          name: 'Salada Crua & Melão (RU 2)',
+          desc: 'Salada: Repolho Verde + Repolho Roxo + Manga + Passas. Sobremesa: Fatia de Melão.',
           score: 4.8,
           count: 64,
           tags: [
-            { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' }
+            { label: 'Sem Glúten', type: 'free' }
           ]
         }
       ],
@@ -157,25 +166,38 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 204,
           type: 'protein',
           badge: 'Proteína Principal',
-          name: 'Escondidinho de Carne Moída com Macaxeira',
-          desc: 'Purê cremoso de macaxeira recheado com carne moída bem temperada.',
+          name: 'Maria Isabel & Creme de Galinha',
+          desc: 'Arroz maria isabel tradicional com carne de sol e creme de galinha.',
           score: 4.9,
-          count: 110,
+          count: 140,
           tags: [
-            { label: 'Sem Glúten', type: 'free' }
+            { label: '⚠️ Contém Glúten', type: 'contains' },
+            { label: '⚠️ Contém Lactose', type: 'contains' }
           ]
         },
         {
           id: 205,
           type: 'veggie',
           badge: 'Opção Vegetariana',
-          name: 'Hambúrguer de Lentilha',
-          desc: 'Hambúrguer de lentilha grelhado com molho especial de ervas.',
+          name: 'Arroz com Soja & Creme de Abóbora (Vegetariano)',
+          desc: 'Arroz soltinho com proteína de soja refogada e creme de abóbora.',
           score: 4.7,
-          count: 80,
+          count: 88,
           tags: [
-            { label: '🌱 Vegano', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' }
+            { label: '🌱 Vegetariano', type: 'free' },
+            { label: '⚠️ Contém Soja', type: 'contains' }
+          ]
+        },
+        {
+          id: 206,
+          type: 'dessert',
+          badge: 'Salada & Sobremesa',
+          name: 'Salada Mista & Laranja',
+          desc: 'Salada: Feijão branco + Couve Mineira + Tomate + Pepino. Sobremesa: Laranja.',
+          score: 4.8,
+          count: 70,
+          tags: [
+            { label: 'Sem Glúten', type: 'free' }
           ]
         }
       ]
@@ -188,8 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 301,
           type: 'protein',
           badge: 'Proteína Principal',
-          name: 'Bife Acebolado com Vinagrete Especial',
-          desc: 'Bife bovino macio acebolado acompanhado de vinagrete fresco.',
+          name: 'Frango à Teriaky',
+          desc: 'Frango grelhado ao molho teriaky oriental.',
           score: 4.8,
           count: 115,
           tags: [
@@ -201,26 +223,24 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 302,
           type: 'veggie',
           badge: 'Opção Vegetariana',
-          name: 'Panqueca de Ricota e Espinafre',
-          desc: 'Massa leve recheada com creme de ricota fresca e espinafre.',
+          name: 'Grão de Bico à Primavera (Vegetariano)',
+          desc: 'Grão de bico temperado com milho, repolho e salsa.',
           score: 4.8,
           count: 82,
           tags: [
-            { label: '🌱 Vegetariano', type: 'free' },
-            { label: '⚠️ Contém Lactose', type: 'contains' }
+            { label: '🌱 Vegetariano', type: 'free' }
           ]
         },
         {
           id: 303,
           type: 'dessert',
           badge: 'Salada & Sobremesa',
-          name: 'Salada Tropical & Doce de Goiaba',
-          desc: 'Salada de acelga, cenoura e milho. Sobremesa: Doce de goiaba.',
+          name: 'Salada Crua & Banana (RU 3)',
+          desc: 'Salada: Repolho Verde + Repolho Roxo + Manga + Passas. Sobremesa: Banana.',
           score: 4.9,
           count: 78,
           tags: [
-            { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' }
+            { label: 'Sem Glúten', type: 'free' }
           ]
         }
       ],
@@ -229,12 +249,26 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 304,
           type: 'protein',
           badge: 'Proteína Principal',
-          name: 'Sopa de Carne com Legumes & Macarrão',
-          desc: 'Sopa reforçada com pedaços de carne, batata, cenoura e macarrão.',
-          score: 4.7,
-          count: 90,
+          name: 'Maria Isabel & Creme de Galinha',
+          desc: 'Arroz maria isabel com carne desfiada e creme de galinha temperado.',
+          score: 4.8,
+          count: 95,
           tags: [
-            { label: '⚠️ Contém Glúten', type: 'contains' }
+            { label: '⚠️ Contém Glúten', type: 'contains' },
+            { label: '⚠️ Contém Lactose', type: 'contains' }
+          ]
+        },
+        {
+          id: 305,
+          type: 'veggie',
+          badge: 'Opção Vegetariana',
+          name: 'Arroz com Soja & Creme de Abóbora (Vegetariano)',
+          desc: 'Arroz temperado com proteína de soja e creme de abóbora.',
+          score: 4.7,
+          count: 65,
+          tags: [
+            { label: '🌱 Vegetariano', type: 'free' },
+            { label: '⚠️ Contém Soja', type: 'contains' }
           ]
         }
       ]
