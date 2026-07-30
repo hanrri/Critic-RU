@@ -181,14 +181,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (ruDetailScore) ruDetailScore.textContent = ruData.score;
   if (ruDetailCount) ruDetailCount.textContent = `(${ruData.count} avaliações)`;
 
-  // Renderizar itens do Cardápio Completo (Descrição apenas na Salada)
+  // Renderizar itens do Cardápio Completo (Descrição apenas na Salada + Botão de Favoritar)
   if (ruMenuItemsList && ruData.dishes) {
     ruMenuItemsList.innerHTML = ruData.dishes.map(dish => {
       const isSalada = dish.type === 'dessert' || dish.badge.includes('Salada') || dish.name.toLowerCase().includes('salada');
+      const isFavoritable = dish.type === 'protein' || dish.type === 'veggie';
+
       return `
         <div class="ru-full-menu-card">
-          <div class="dish-header">
+          <div class="dish-header" style="display: flex; justify-content: space-between; align-items: center;">
             <span class="badge badge-${dish.type}">${dish.badge}</span>
+            ${isFavoritable ? `
+              <button class="btn-favorite" aria-label="Favoritar ${dish.name}">
+                <i data-lucide="heart"></i>
+              </button>
+            ` : ''}
           </div>
           <h4 class="dish-name" style="font-size: 15px; font-weight: 800; color: var(--text-main); margin: 6px 0 4px 0;">${dish.name}</h4>
           ${isSalada && dish.desc ? `
@@ -202,6 +209,22 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
     }).join('');
+
+    // Event listener para favoritar prato no menu do RU
+    document.querySelectorAll('.ru-full-menu-card .btn-favorite').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        if (btn.classList.contains('active')) {
+          btn.style.color = '#ef4444';
+          const icon = btn.querySelector('svg, i');
+          if (icon) icon.style.fill = '#ef4444';
+        } else {
+          btn.style.color = '';
+          const icon = btn.querySelector('svg, i');
+          if (icon) icon.style.fill = 'none';
+        }
+      });
+    });
   }
 
   // --- LÓGICA DE AVALIAÇÃO E COMENTÁRIOS (Estilo YouTube) ---
