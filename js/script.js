@@ -630,4 +630,280 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderMenu('almoco');
+  initRuDetailPage();
+  initHistoryPage();
+
+  /* ==========================================================================
+     LÓGICA DA PÁGINA DETALHADA DO RU (detalhes-ru.html)
+     ========================================================================== */
+  function initRuDetailPage() {
+    const ruTitleEl = document.getElementById('ru-detail-title');
+    if (!ruTitleEl) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const ruKey = urlParams.get('ru') || 'ru1-ccn';
+    const ruData = menuData[ruKey] || menuData['ru1-ccn'];
+
+    ruTitleEl.textContent = ruData.name;
+
+    let detailMealType = 'almoco';
+    const tabAlmoco = document.getElementById('tab-ru-almoco');
+    const tabJantar = document.getElementById('tab-ru-jantar');
+    const menuListEl = document.getElementById('ru-full-menu-list');
+
+    function renderFullMenu(meal) {
+      if (!menuListEl) return;
+      const dishes = (ruData[meal] && ruData[meal].length > 0) ? ruData[meal] : ruData['almoco'];
+
+      menuListEl.innerHTML = dishes.map(dish => `
+        <div class="dish-card" style="margin-bottom: 0;">
+          <div class="dish-header">
+            <span class="badge badge-${dish.type}">${dish.badge}</span>
+            <button class="btn-favorite" aria-label="Favoritar ${dish.name}" data-dish-id="${dish.id}">
+              <i data-lucide="heart"></i>
+            </button>
+          </div>
+          <h4 class="dish-name" style="font-size: 15px; font-weight: 800; color: var(--text-main); margin: 6px 0;">${dish.name}</h4>
+          <p class="dish-description" style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">${dish.desc}</p>
+          ${dish.tags && dish.tags.length > 0 ? `
+            <div class="dish-tags">
+              ${dish.tags.map(t => `<span class="tag-allergen ${t.type || 'neutral'}">${t.label || t}</span>`).join('')}
+            </div>
+          ` : ''}
+          <div class="dish-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border-color);">
+            <div class="dish-rating" style="display: flex; align-items: center; gap: 4px;">
+              <i data-lucide="star" style="width: 14px; height: 14px; color: var(--accent-star); fill: var(--accent-star);"></i>
+              <span class="rating-score" style="font-size: 12px; font-weight: 800;">${dish.score}</span>
+              <span class="rating-count" style="font-size: 10px; color: var(--text-muted);">(${dish.count} avaliações)</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    if (tabAlmoco && tabJantar) {
+      tabAlmoco.addEventListener('click', () => {
+        detailMealType = 'almoco';
+        tabAlmoco.classList.add('active');
+        tabJantar.classList.remove('active');
+        renderFullMenu('almoco');
+      });
+
+      tabJantar.addEventListener('click', () => {
+        detailMealType = 'jantar';
+        tabJantar.classList.add('active');
+        tabAlmoco.classList.remove('active');
+        renderFullMenu('jantar');
+      });
+    }
+
+    renderFullMenu('almoco');
+
+    // Feed de Comentários
+    const commentsListEl = document.getElementById('comments-feed-list');
+    const initialComments = [
+      { name: 'Henrique S.', avatar: 'H', time: 'Há 15 min', score: '⭐ 5.0', text: 'O frango à teriaky hoje estava sensacional! Fila andou bem rápido no RU 1.', likes: 14 },
+      { name: 'Mariana C.', avatar: 'M', time: 'Há 45 min', score: '⭐ 4.8', text: 'Opção de grão de bico perfeita. Muito bem temperada e a salada com manga estava fresquinha.', likes: 9 },
+      { name: 'Lucas P.', avatar: 'L', time: 'Há 2 horas', score: '⭐ 4.5', text: 'Farofa crocante e o suco bem gelado. Atendimento dos funcionários nota 10.', likes: 6 }
+    ];
+
+    function renderComments() {
+      if (!commentsListEl) return;
+      commentsListEl.innerHTML = initialComments.map(c => `
+        <div class="comment-card">
+          <div class="comment-card-header">
+            <div class="comment-user-box">
+              <div class="user-avatar-comment">${c.avatar}</div>
+              <div>
+                <span class="comment-user-name">${c.name}</span>
+                <span class="comment-time" style="display: block;">${c.time}</span>
+              </div>
+            </div>
+            <span class="comment-stars">${c.score}</span>
+          </div>
+          <p class="comment-text">"${c.text}"</p>
+          <div class="comment-footer">
+            <span class="tag-chip neutral" style="font-size: 10px; padding: 2px 8px;">Prato do Dia</span>
+            <button class="btn-like-comment" onclick="this.classList.toggle('liked');">
+              <i data-lucide="thumbs-up" style="width: 14px; height: 14px;"></i>
+              <span>${c.likes}</span>
+            </button>
+          </div>
+        </div>
+      `).join('');
+
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    renderComments();
+
+    // Form Inline Star Picker (Estilo YouTube/Amazon)
+    let inlineRating = 0;
+    const inlineStarBtns = document.querySelectorAll('.inline-star-btn');
+    const inlineStarText = document.getElementById('inline-star-text');
+    const ratingTexts = ['', '1/5 - Precisa Melhorar', '2/5 - Regular', '3/5 - Bom', '4/5 - Muito Bom!', '5/5 - Excelente! 🌟'];
+
+    inlineStarBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        inlineRating = idx + 1;
+        inlineStarBtns.forEach((b, i) => {
+          if (i < inlineRating) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+        if (inlineStarText) inlineStarText.textContent = ratingTexts[inlineRating];
+      });
+    });
+
+    // Tag Chips Selector
+    document.querySelectorAll('.inline-tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        tag.classList.toggle('active');
+      });
+    });
+
+    // Enviar Avaliação Inline
+    const btnPublish = document.getElementById('btn-publish-inline-review');
+    const commentInput = document.getElementById('inline-comment-input');
+
+    if (btnPublish && commentInput) {
+      btnPublish.addEventListener('click', () => {
+        const text = commentInput.value.trim();
+        if (inlineRating === 0) {
+          alert('Por favor, selecione quantas estrelas deseja dar antes de enviar.');
+          return;
+        }
+        if (!text) {
+          alert('Por favor, escreva um breve comentário sobre a refeição.');
+          return;
+        }
+
+        const newComment = {
+          name: 'Você (Aluno UFPI)',
+          avatar: 'V',
+          time: 'Agora mesmo',
+          score: `⭐ ${inlineRating}.0`,
+          text: text,
+          likes: 0
+        };
+
+        initialComments.unshift(newComment);
+        renderComments();
+
+        commentInput.value = '';
+        inlineRating = 0;
+        inlineStarBtns.forEach(b => b.classList.remove('active'));
+        if (inlineStarText) inlineStarText.textContent = 'Avaliação enviada com sucesso!';
+        document.querySelectorAll('.inline-tag').forEach(t => t.classList.remove('active'));
+
+        const countEl = document.getElementById('comments-count');
+        if (countEl) countEl.textContent = `${initialComments.length + 140} comentários`;
+      });
+    }
+  }
+
+  /* ==========================================================================
+     LÓGICA DO HISTÓRICO POR DATA (avaliacoes-historico.html)
+     ========================================================================== */
+  function initHistoryPage() {
+    const datePicker = document.getElementById('history-date-picker');
+    if (!datePicker) return;
+
+    datePicker.value = '2026-07-29';
+
+    const dateTitleEl = document.getElementById('selected-date-title');
+    const menuListEl = document.getElementById('history-menu-list');
+    const reviewsListEl = document.getElementById('history-reviews-list');
+    const pills = document.querySelectorAll('.date-pill');
+
+    const mockHistory = {
+      '2026-07-29': {
+        title: 'Quarta-feira, 29 de Julho de 2026',
+        menu: [
+          { name: 'Frango à Teriaky (RU 1, 2 e 3)', type: 'protein', badge: 'Proteína Principal', desc: 'Tiras de frango refogadas ao molho teriaky oriental.' },
+          { name: 'Grão de Bico à Primavera', type: 'veggie', badge: 'Vegetariano', desc: 'Grão de bico refogado com milho e ervas.' },
+          { name: 'Arroz, Feijão com Batata Doce & Farofa', type: 'side', badge: 'Acompanhamentos', desc: 'Arroz soltinho e feijão caseiro.' },
+          { name: 'Salada Crua & Melancia / Banana', type: 'dessert', badge: 'Salada & Sobremesa', desc: 'Salada de repolho e frutas frescas.' }
+        ],
+        reviews: [
+          { user: 'Gabriel M.', time: '29/07 às 13:40', score: '⭐ 5.0', comment: 'Comida impecável no almoço de quarta! Molho teriaky muito bom.' },
+          { user: 'Carla T.', time: '29/07 às 12:15', score: '⭐ 4.8', comment: 'Batata doce no feijão combinou muito bem.' }
+        ]
+      },
+      '2026-07-28': {
+        title: 'Terça-feira, 28 de Julho de 2026',
+        menu: [
+          { name: 'Maria Isabel & Creme de Galinha', type: 'protein', badge: 'Proteína Principal', desc: 'Arroz maria isabel tradicional com carne de sol.' },
+          { name: 'Arroz com Soja & Creme de Abóbora', type: 'veggie', badge: 'Vegetariano', desc: 'Proteína de soja refogada com creme de abóbora.' }
+        ],
+        reviews: [
+          { user: 'Felipe A.', time: '28/07 às 18:30', score: '⭐ 4.9', comment: 'Maria Isabel com creme de galinha estava sensacional!' }
+        ]
+      },
+      '2026-07-27': {
+        title: 'Segunda-feira, 27 de Julho de 2026',
+        menu: [
+          { name: 'Bife Acebolado com Vinagrete', type: 'protein', badge: 'Proteína Principal', desc: 'Bife bovino macio acebolado.' },
+          { name: 'Panqueca de Ricota e Espinafre', type: 'veggie', badge: 'Vegetariano', desc: 'Massa leve com ricota e espinafre.' }
+        ],
+        reviews: [
+          { user: 'Amanda R.', time: '27/07 às 12:50', score: '⭐ 4.7', comment: 'Bife bem macio e vinagrete caprichado.' }
+        ]
+      }
+    };
+
+    function updateHistoryView(dateStr) {
+      const data = mockHistory[dateStr] || mockHistory['2026-07-29'];
+      if (dateTitleEl) dateTitleEl.textContent = data.title;
+
+      if (menuListEl) {
+        menuListEl.innerHTML = data.menu.map(item => `
+          <div class="sub-dish-card" style="margin-bottom: 8px;">
+            <span class="badge badge-${item.type}">${item.badge}</span>
+            <h4 style="font-size: 14px; font-weight: 700; margin: 4px 0;">${item.name}</h4>
+            <p style="font-size: 11px; color: var(--text-muted);">${item.desc}</p>
+          </div>
+        `).join('');
+      }
+
+      if (reviewsListEl) {
+        reviewsListEl.innerHTML = data.reviews.map(r => `
+          <div class="comment-card">
+            <div class="comment-card-header">
+              <div class="comment-user-box">
+                <div class="user-avatar-comment">${r.user[0]}</div>
+                <div>
+                  <span class="comment-user-name">${r.user}</span>
+                  <span class="comment-time" style="display: block;">${r.time}</span>
+                </div>
+              </div>
+              <span class="comment-stars">${r.score}</span>
+            </div>
+            <p class="comment-text">"${r.comment}"</p>
+          </div>
+        `).join('');
+      }
+    }
+
+    datePicker.addEventListener('change', (e) => {
+      updateHistoryView(e.target.value);
+    });
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const dt = pill.getAttribute('data-date');
+        datePicker.value = dt;
+        updateHistoryView(dt);
+      });
+    });
+
+    updateHistoryView('2026-07-29');
+  }
 });
