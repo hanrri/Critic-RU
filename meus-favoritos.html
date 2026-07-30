@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRU - Meus Pratos Favoritos | Critic RU UFPI</title>
+  <meta name="description" content="Gerencie seus pratos favoritos salvos nos Restaurantes Universitários da UFPI.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="app" class="app-container">
+
+    <main class="main-content" style="padding-top: 16px;">
+
+      <!-- Botão Voltar -->
+      <a href="perfil.html" class="btn-back-home" style="color: var(--primary); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; font-weight: 700; margin-bottom: 16px;">
+        <i data-lucide="arrow-left"></i>
+        <span>Voltar ao Perfil</span>
+      </a>
+
+      <!-- Cabeçalho da Página -->
+      <div class="page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <div>
+          <h1 class="page-title" style="font-size: 20px; font-weight: 800; color: var(--text-main); margin: 0;">Meus Pratos Favoritos</h1>
+          <p style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">Receba alertas quando estes pratos estiverem no cardápio</p>
+        </div>
+        <span id="fav-count-badge" style="font-size: 12px; font-weight: 800; background: #fee2e2; color: #dc2626; padding: 4px 10px; border-radius: var(--radius-full);">3 pratos</span>
+      </div>
+
+      <!-- Lista de Pratos Favoritos -->
+      <div id="favorites-list" style="display: flex; flex-direction: column; gap: 12px;">
+
+        <div class="favorite-item-card" data-dish-name="Frango à Teriaky" style="background: var(--bg-card); border-radius: var(--radius-md); padding: 14px 16px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm); transition: all 0.2s ease;">
+          <div class="fav-dish-info">
+            <span class="badge badge-protein" style="font-size: 10px; font-weight: 700; text-transform: uppercase;">Proteína Principal</span>
+            <h4 style="font-size: 15px; font-weight: 800; color: var(--text-main); margin: 4px 0 2px 0;">Frango à Teriaky</h4>
+            <span style="font-size: 11px; color: #166534; font-weight: 600;">✓ Servido com frequência no RU 1, 2 e 3</span>
+          </div>
+          <button class="btn-remove-favorite" data-name="Frango à Teriaky" aria-label="Remover dos favoritos" style="background: transparent; border: none; cursor: pointer; color: #ef4444; padding: 8px; border-radius: var(--radius-full); transition: var(--transition);">
+            <i data-lucide="heart" style="width: 22px; height: 22px; fill: #ef4444; color: #ef4444;"></i>
+          </button>
+        </div>
+
+        <div class="favorite-item-card" data-dish-name="Grão de Bico à Primavera" style="background: var(--bg-card); border-radius: var(--radius-md); padding: 14px 16px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm); transition: all 0.2s ease;">
+          <div class="fav-dish-info">
+            <span class="badge badge-veggie" style="font-size: 10px; font-weight: 700; text-transform: uppercase;">Opção Vegetariana</span>
+            <h4 style="font-size: 15px; font-weight: 800; color: var(--text-main); margin: 4px 0 2px 0;">Grão de Bico à Primavera</h4>
+            <span style="font-size: 11px; color: #166534; font-weight: 600;">✓ Servido com frequência no RU 1, 2 e 3</span>
+          </div>
+          <button class="btn-remove-favorite" data-name="Grão de Bico à Primavera" aria-label="Remover dos favoritos" style="background: transparent; border: none; cursor: pointer; color: #ef4444; padding: 8px; border-radius: var(--radius-full); transition: var(--transition);">
+            <i data-lucide="heart" style="width: 22px; height: 22px; fill: #ef4444; color: #ef4444;"></i>
+          </button>
+        </div>
+
+        <div class="favorite-item-card" data-dish-name="Maria Isabel & Creme de Galinha" style="background: var(--bg-card); border-radius: var(--radius-md); padding: 14px 16px; border: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-sm); transition: all 0.2s ease;">
+          <div class="fav-dish-info">
+            <span class="badge badge-protein" style="font-size: 10px; font-weight: 700; text-transform: uppercase;">Proteína Principal</span>
+            <h4 style="font-size: 15px; font-weight: 800; color: var(--text-main); margin: 4px 0 2px 0;">Maria Isabel & Creme de Galinha</h4>
+            <span style="font-size: 11px; color: #166534; font-weight: 600;">✓ Servido no Jantar do RU 2 e 3</span>
+          </div>
+          <button class="btn-remove-favorite" data-name="Maria Isabel & Creme de Galinha" aria-label="Remover dos favoritos" style="background: transparent; border: none; cursor: pointer; color: #ef4444; padding: 8px; border-radius: var(--radius-full); transition: var(--transition);">
+            <i data-lucide="heart" style="width: 22px; height: 22px; fill: #ef4444; color: #ef4444;"></i>
+          </button>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Modal de Confirmação de Remoção -->
+    <div id="confirm-fav-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" style="position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 16px;">
+      <div class="modal-card" style="background: #ffffff; border-radius: var(--radius-lg); padding: 24px; max-width: 360px; width: 100%; text-align: center; box-shadow: var(--shadow-md);">
+        <div style="width: 48px; height: 48px; background: #fee2e2; color: #dc2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px auto;">
+          <i data-lucide="heart-off" style="width: 24px; height: 24px;"></i>
+        </div>
+        <h3 style="font-size: 17px; font-weight: 800; color: var(--text-main); margin-bottom: 6px;">Remover dos Favoritos?</h3>
+        <p id="confirm-fav-message" style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px; line-height: 1.4;">
+          Tem certeza que deseja remover este prato da sua lista de favoritos?
+        </p>
+        <div style="display: flex; gap: 10px;">
+          <button id="btn-cancel-fav-remove" class="btn-secondary" style="flex: 1; padding: 10px; border-radius: var(--radius-md); font-weight: 700; border: 1px solid var(--border-color); background: var(--bg-app); color: var(--text-main); cursor: pointer;">Cancelar</button>
+          <button id="btn-confirm-fav-remove" class="btn-primary" style="flex: 1; padding: 10px; border-radius: var(--radius-md); font-weight: 700; border: none; background: #dc2626; color: #ffffff; cursor: pointer;">Remover</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navegação Principal Bottom Nav -->
+    <nav class="bottom-nav" aria-label="Navegação Principal">
+      <a href="index.html" class="nav-item">
+        <i data-lucide="utensils"></i>
+        <span>Cardápio</span>
+      </a>
+      <a href="avaliacoes.html" class="nav-item">
+        <i data-lucide="star"></i>
+        <span>Avaliações</span>
+      </a>
+      <a href="perfil.html" class="nav-item active">
+        <i data-lucide="user"></i>
+        <span>Perfil</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+
+      let cardTargetToRemove = null;
+
+      const confirmModal = document.getElementById('confirm-fav-modal');
+      const confirmMessage = document.getElementById('confirm-fav-message');
+      const btnCancel = document.getElementById('btn-cancel-fav-remove');
+      const btnConfirm = document.getElementById('btn-confirm-fav-remove');
+      const favoritesList = document.getElementById('favorites-list');
+      const favCountBadge = document.getElementById('fav-count-badge');
+
+      // Abrir modal ao clicar no coração vermelho
+      document.querySelectorAll('.btn-remove-favorite').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const dishName = btn.getAttribute('data-name');
+          cardTargetToRemove = btn.closest('.favorite-item-card');
+          if (confirmMessage && dishName) {
+            confirmMessage.innerHTML = `Tem certeza que deseja remover <strong>${dishName}</strong> dos seus favoritos?`;
+          }
+          if (confirmModal) {
+            confirmModal.classList.remove('hidden');
+          }
+        });
+      });
+
+      // Fechar modal ao cancelar
+      if (btnCancel && confirmModal) {
+        btnCancel.addEventListener('click', () => {
+          cardTargetToRemove = null;
+          confirmModal.classList.add('hidden');
+        });
+      }
+
+      // Confirmar remoção
+      if (btnConfirm && confirmModal) {
+        btnConfirm.addEventListener('click', () => {
+          if (cardTargetToRemove) {
+            cardTargetToRemove.style.opacity = '0';
+            cardTargetToRemove.style.transform = 'scale(0.9)';
+            cardTargetToRemove.style.transition = 'all 0.25s ease';
+            setTimeout(() => {
+              cardTargetToRemove.remove();
+              updateFavCount();
+              cardTargetToRemove = null;
+            }, 250);
+          }
+          confirmModal.classList.add('hidden');
+        });
+      }
+
+      function updateFavCount() {
+        const remaining = favoritesList.querySelectorAll('.favorite-item-card').length;
+        if (favCountBadge) {
+          favCountBadge.textContent = `${remaining} ${remaining === 1 ? 'prato' : 'pratos'}`;
+        }
+        if (remaining === 0) {
+          favoritesList.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
+              <i data-lucide="heart" style="width: 48px; height: 48px; opacity: 0.3; margin-bottom: 12px;"></i>
+              <p style="font-size: 14px; font-weight: 700;">Nenhum prato favorito salvo.</p>
+              <p style="font-size: 12px; margin-top: 4px;">Navegue pelo cardápio e clique no coração para salvar seus pratos favoritos!</p>
+            </div>
+          `;
+          if (window.lucide) window.lucide.createIcons();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
