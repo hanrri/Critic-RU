@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const dateData = {
     '2026-07-29': {
-      formattedDate: 'Quarta-feira, 29 de Julho',
+      formattedDate: 'Quarta-feira (29/07/2026)',
       almoco: {
         'ru1-ccn': {
           name: 'RU 1 - CCN',

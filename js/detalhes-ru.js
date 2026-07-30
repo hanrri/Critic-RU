@@ -15,28 +15,28 @@ document.addEventListener('DOMContentLoaded', () => {
           type: 'protein',
           name: 'Frango à Teriaky',
           desc: 'Tiras de peito de frango refogadas ao molho teriaky oriental.',
-          tags: ['Sem Glúten', 'Sem Lactose', 'Rico em Proteína']
+          tags: []
         },
         {
           badge: 'Opção Vegetariana',
           type: 'veggie',
           name: 'Grão de Bico à Primavera (Vegetariano)',
           desc: 'Grão de bico refogado com milho, pimentões coloridos e ervas frescas.',
-          tags: ['🌱 Vegetariano', 'Sem Glúten', 'Sem Lactose']
+          tags: []
         },
         {
           badge: 'Acompanhamentos',
           type: 'side',
           name: 'Arroz, Feijão com Batata Doce & Farofa',
           desc: 'Arroz soltinho, feijão caseiro cozido com batata doce e farofa temperada.',
-          tags: ['Sem Glúten']
+          tags: []
         },
         {
           badge: 'Salada & Sobremesa',
           type: 'dessert',
           name: 'Salada Crua & Banana',
           desc: 'Salada: Repolho Verde + Repolho Roxo + Manga + Passas + Salsa. Sobremesa: Banana.',
-          tags: ['Sem Glúten', 'Sem Lactose']
+          tags: []
         }
       ]
     },
@@ -58,21 +58,21 @@ document.addEventListener('DOMContentLoaded', () => {
           type: 'veggie',
           name: 'Arroz com Soja & Creme de Abóbora (Vegetariano)',
           desc: 'Arroz soltinho com proteína de soja refogada e creme de abóbora.',
-          tags: ['🌱 Vegetariano', '⚠️ Contém Soja']
+          tags: ['⚠️ Contém Soja']
         },
         {
           badge: 'Acompanhamentos',
           type: 'side',
           name: 'Farofa Especial',
           desc: 'Farofa crocante de mandioca.',
-          tags: ['Sem Lactose']
+          tags: []
         },
         {
           badge: 'Salada & Sobremesa',
           type: 'dessert',
           name: 'Salada Mista & Melão',
           desc: 'Salada: Feijão branco + Couve Mineira + Tomate + Pepino. Sobremesa: Melão.',
-          tags: ['Sem Glúten', 'Sem Lactose']
+          tags: []
         }
       ]
     },
@@ -87,28 +87,28 @@ document.addEventListener('DOMContentLoaded', () => {
           type: 'protein',
           name: 'Frango à Teriaky',
           desc: 'Frango grelhado ao molho teriaky oriental.',
-          tags: ['Sem Glúten', 'Sem Lactose']
+          tags: []
         },
         {
           badge: 'Opção Vegetariana',
           type: 'veggie',
           name: 'Grão de Bico à Primavera (Vegetariano)',
           desc: 'Grão de bico temperado com milho, repolho e salsa.',
-          tags: ['🌱 Vegetariano']
+          tags: []
         },
         {
           badge: 'Acompanhamentos',
           type: 'side',
           name: 'Arroz Branco & Feijão Tropeiro',
           desc: 'Arroz soltinho com feijão tropeiro temperado.',
-          tags: ['Sem Lactose']
+          tags: []
         },
         {
           badge: 'Salada & Sobremesa',
           type: 'dessert',
           name: 'Salada Crua & Doce de Goiaba',
           desc: 'Salada de acelga, cenoura e milho. Sobremesa: Doce de goiaba.',
-          tags: ['Sem Glúten']
+          tags: []
         }
       ]
     }
@@ -194,9 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <h4 class="dish-name" style="font-size: 15px; font-weight: 800; color: var(--text-main); margin: 6px 0 4px 0;">${dish.name}</h4>
         <p class="dish-description" style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">${dish.desc}</p>
-        <div class="dish-tags">
-          ${dish.tags.map(tag => `<span class="tag-allergen neutral">${tag}</span>`).join('')}
-        </div>
+        ${dish.tags && dish.tags.filter(t => t.includes('Contém')).length > 0 ? `
+          <div class="dish-tags">
+            ${dish.tags.filter(t => t.includes('Contém')).map(tag => `<span class="tag-allergen contains">${tag}</span>`).join('')}
+          </div>
+        ` : ''}
       </div>
     `).join('');
   }

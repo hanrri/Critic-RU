@@ -32,11 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Tiras de peito de frango refogadas ao molho teriaky oriental.',
           score: 4.8,
           count: 142,
-          tags: [
-            { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' },
-            { label: 'Rico em Proteína', type: 'neutral' }
-          ]
+          tags: []
         },
         {
           id: 102,
@@ -46,11 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Grão de bico refogado com milho, pimentões coloridos e ervas frescas.',
           score: 4.9,
           count: 87,
-          tags: [
-            { label: '🌱 Vegetariano', type: 'free' },
-            { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' }
-          ]
+          tags: []
         },
         {
           id: 103,
@@ -60,9 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Arroz soltinho, feijão caseiro cozido com batata doce e farofa temperada.',
           score: 4.6,
           count: 65,
-          tags: [
-            { label: 'Sem Glúten', type: 'free' }
-          ]
+          tags: []
         },
         {
           id: 104,
@@ -72,10 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Salada: Repolho Verde + Repolho Roxo + Manga + Passas + Salsa. Sobremesa: Banana.',
           score: 4.7,
           count: 53,
-          tags: [
-            { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' }
-          ]
+          tags: []
         }
       ],
       jantar: [
@@ -87,10 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Tiras de peito de frango refogadas ao molho teriaky oriental.',
           score: 4.8,
           count: 118,
-          tags: [
-            { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' }
-          ]
+          tags: []
         },
         {
           id: 106,
@@ -100,10 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Grão de bico refogado com pimentão, milho e salsa.',
           score: 4.6,
           count: 72,
-          tags: [
-            { label: '🌱 Vegetariano', type: 'free' },
-            { label: 'Sem Glúten', type: 'free' }
-          ]
+          tags: []
         },
         {
           id: 107,
@@ -113,9 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Arroz soltinho, farofa crocante e fatia de melancia fresca de sobremesa.',
           score: 4.7,
           count: 60,
-          tags: [
-            { label: 'Sem Glúten', type: 'free' }
-          ]
+          tags: []
         }
       ]
     },
@@ -131,10 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Peito de frango suculento ao molho teriaky especial.',
           score: 4.7,
           count: 130,
-          tags: [
-            { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' }
-          ]
+          tags: []
         },
         {
           id: 202,
@@ -144,9 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Grão de bico com legumes e ervas finas.',
           score: 4.8,
           count: 95,
-          tags: [
-            { label: '🌱 Vegetariano', type: 'free' }
-          ]
+          tags: []
         },
         {
           id: 203,
@@ -156,9 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Salada: Repolho Verde + Repolho Roxo + Manga + Passas. Sobremesa: Fatia de Melão.',
           score: 4.8,
           count: 64,
-          tags: [
-            { label: 'Sem Glúten', type: 'free' }
-          ]
+          tags: []
         }
       ],
       jantar: [
@@ -184,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
           score: 4.7,
           count: 88,
           tags: [
-            { label: '🌱 Vegetariano', type: 'free' },
             { label: '⚠️ Contém Soja', type: 'contains' }
           ]
         },
@@ -196,9 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Salada: Feijão branco + Couve Mineira + Tomate + Pepino. Sobremesa: Laranja.',
           score: 4.8,
           count: 70,
-          tags: [
-            { label: 'Sem Glúten', type: 'free' }
-          ]
+          tags: []
         }
       ]
     },
@@ -214,10 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Frango grelhado ao molho teriaky oriental.',
           score: 4.8,
           count: 115,
-          tags: [
-            { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' }
-          ]
+          tags: []
         },
         {
           id: 302,
@@ -227,9 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Grão de bico temperado com milho, repolho e salsa.',
           score: 4.8,
           count: 82,
-          tags: [
-            { label: '🌱 Vegetariano', type: 'free' }
-          ]
+          tags: []
         },
         {
           id: 303,
@@ -239,9 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
           desc: 'Salada: Repolho Verde + Repolho Roxo + Manga + Passas. Sobremesa: Banana.',
           score: 4.9,
           count: 78,
-          tags: [
-            { label: 'Sem Glúten', type: 'free' }
-          ]
+          tags: []
         }
       ],
       jantar: [
@@ -267,7 +229,6 @@ document.addEventListener('DOMContentLoaded', () => {
           score: 4.7,
           count: 65,
           tags: [
-            { label: '🌱 Vegetariano', type: 'free' },
             { label: '⚠️ Contém Soja', type: 'contains' }
           ]
         }
