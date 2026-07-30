@@ -174,29 +174,9 @@
   </div>
 
   <script>
-    lucide.createIcons();
-
-    // Smooth scroll para Meus Pratos Favoritos
-    document.querySelectorAll('a[href="#secao-favoritos"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.getElementById('secao-favoritos');
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-
-    document.querySelectorAll('.btn-remove-fav').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.favorite-item-card');
-        if (card) {
-          card.style.opacity = '0';
-          card.style.transform = 'scale(0.9)';
-          card.style.transition = 'all 0.25s ease';
-          setTimeout(() => card.remove(), 250);
-        }
-      });
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
   </script>
 </body>
 </html>
