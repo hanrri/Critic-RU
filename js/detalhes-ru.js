@@ -172,27 +172,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Elementos da página
   const ruData = menuData[ruKey] || menuData['ru1-ccn'];
 
-  const dateParam = urlParams.get('date');
   const fromParam = urlParams.get('from');
   const btnBackHeader = document.getElementById('btn-back-header');
   const btnBackText = document.getElementById('btn-back-text');
 
   if (btnBackHeader) {
     if (fromParam === 'avaliacoes' || document.referrer.includes('avaliacoes.html')) {
-      const backUrl = dateParam ? `avaliacoes.html?date=${dateParam}` : 'avaliacoes.html';
-      btnBackHeader.setAttribute('href', backUrl);
-      if (btnBackText) btnBackText.textContent = 'Voltar às Avaliações';
+      btnBackHeader.setAttribute('href', 'avaliacoes.html');
+      btnBackHeader.innerHTML = `<i data-lucide="arrow-left"></i> <span>Voltar às Avaliações</span>`;
       btnBackHeader.addEventListener('click', (e) => {
         if (window.history.length > 1) {
           e.preventDefault();
           window.history.back();
-        } else {
-          window.location.href = backUrl;
         }
       });
     } else {
       btnBackHeader.setAttribute('href', 'index.html');
-      if (btnBackText) btnBackText.textContent = 'Voltar ao Cardápio Geral';
+      btnBackHeader.innerHTML = `<i data-lucide="arrow-left"></i> <span>Voltar ao Cardápio Geral</span>`;
+    }
+    if (window.lucide) {
+      window.lucide.createIcons();
     }
   }
 

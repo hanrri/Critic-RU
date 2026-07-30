@@ -1,8 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const paramDate = urlParams.get('date');
-  let currentDate = paramDate || '2026-07-29';
+  let currentDate = '2026-07-29';
   let currentMeal = 'almoco';
 
   const dateData = {
@@ -278,17 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
       renderEvaluations();
-    });
-  }
-
-  if (paramDate) {
-    if (datePickerInput) datePickerInput.value = paramDate;
-    dayPillBtns.forEach(btn => {
-      if (btn.getAttribute('data-date') === paramDate) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
     });
   }
 
