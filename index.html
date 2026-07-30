@@ -86,66 +86,6 @@
 
         </main>
 
-        <div id="review-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true"
-            aria-labelledby="modal-title">
-            <div class="modal-card">
-
-                <div class="modal-header">
-                    <h3 id="modal-title" class="modal-title">Avaliar Prato</h3>
-                    <button id="btn-close-modal" class="btn-close" aria-label="Fechar Modal">
-                        <i data-lucide="x"></i>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <p id="modal-dish-name" class="modal-dish-name">Frango Grelhado ao Molho de Ervas</p>
-
-                    <div class="star-rating-picker">
-                        <span class="picker-label">Sua nota:</span>
-                        <div id="star-input-group" class="star-input-group">
-                            <button class="star-btn" data-value="1" aria-label="1 estrela"><i
-                                    data-lucide="star"></i></button>
-                            <button class="star-btn" data-value="2" aria-label="2 estrelas"><i
-                                    data-lucide="star"></i></button>
-                            <button class="star-btn" data-value="3" aria-label="3 estrelas"><i
-                                    data-lucide="star"></i></button>
-                            <button class="star-btn" data-value="4" aria-label="4 estrelas"><i
-                                    data-lucide="star"></i></button>
-                            <button class="star-btn" data-value="5" aria-label="5 estrelas"><i
-                                    data-lucide="star"></i></button>
-                        </div>
-                        <span id="star-rating-text" class="rating-feedback-text">Selecione uma nota</span>
-                    </div>
-
-                    <div class="quick-tags-group">
-                        <span class="picker-label">Tags rápidas:</span>
-                        <div class="tags-container">
-                            <button type="button" class="tag-chip">😋 Muito Saboroso</button>
-                            <button type="button" class="tag-chip">🔥 Quentinho</button>
-                            <button type="button" class="tag-chip">🧂 Pouco Sal</button>
-                            <button type="button" class="tag-chip">⏳ Fila Demorada</button>
-                            <button type="button" class="tag-chip">⚡ Atendimento Rápido</button>
-                        </div>
-                    </div>
-
-                    <div class="comment-field-group">
-                        <label for="review-comment" class="picker-label">Comentário (opcional):</label>
-                        <textarea id="review-comment" rows="3"
-                            placeholder="Conte mais sobre a refeição, tempero, ponto da carne ou fila..."></textarea>
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button id="btn-cancel-review" class="btn-secondary">Cancelar</button>
-                    <button id="btn-submit-review" class="btn-primary">
-                        <i data-lucide="send"></i>
-                        <span>Enviar Review</span>
-                    </button>
-                </div>
-
-            </div>
-        </div>
-
     <div id="notifications-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="notif-modal-title">
       <div class="modal-card">
         
@@ -288,9 +228,9 @@
 
     </div>
 
+    <script src="js/data.js"></script>
     <script src="js/script.js"></script>
     <script>
-        
         lucide.createIcons();
     </script>
 </body>
