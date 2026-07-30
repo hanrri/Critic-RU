@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRU - Avaliações Gerais por Dia | Critic RU UFPI</title>
+  <meta name="description" content="Confira o histórico de avaliações e opiniões dos alunos sobre o cardápio dos RUs da UFPI por data.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div id="app" class="app-container">
+
+    <!-- Header do App -->
+    <header class="main-header">
+      <div class="header-top">
+        <div class="brand">
+          <div class="brand-logo">
+            <i data-lucide="star"></i>
+          </div>
+          <div class="brand-info">
+            <h1 class="brand-title">Avaliações</h1>
+            <span class="brand-subtitle">Histórico Geral por Dia • UFPI</span>
+          </div>
+        </div>
+
+        <div class="user-action">
+          <a href="perfil.html" class="profile-avatar" aria-label="Perfil do Usuário">
+            <i data-lucide="user"></i>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+
+      <!-- Seletor de Data & Turno -->
+      <section class="date-picker-section">
+        
+        <div class="section-header" style="margin-bottom: 10px;">
+          <h2 class="section-title" style="display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="calendar" style="color: var(--primary);"></i>
+            <span>Selecione o Dia</span>
+          </h2>
+          <div class="date-input-box" style="display: flex; align-items: center; gap: 6px;">
+            <input type="date" id="date-picker-input" value="2026-07-29" style="font-family: inherit; font-size: 12px; font-weight: 700; padding: 4px 8px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); color: var(--text-main);">
+          </div>
+        </div>
+
+        <!-- Pílulas Rápidas de Dias -->
+        <div class="day-pills-bar" id="day-pills-bar">
+          <button class="day-pill active" data-date="2026-07-29">
+            <span class="day-pill-name">Quarta (29/07)</span>
+            <span class="day-pill-tag">Hoje</span>
+          </button>
+          <button class="day-pill" data-date="2026-07-28">
+            <span class="day-pill-name">Terça (28/07)</span>
+            <span class="day-pill-tag">Ontem</span>
+          </button>
+          <button class="day-pill" data-date="2026-07-27">
+            <span class="day-pill-name">Segunda (27/07)</span>
+            <span class="day-pill-tag">Passado</span>
+          </button>
+          <button class="day-pill" data-date="2026-07-24">
+            <span class="day-pill-name">Sexta (24/07)</span>
+            <span class="day-pill-tag">Passado</span>
+          </button>
+        </div>
+
+        <!-- Abas de Turno (Almoço vs Jantar) -->
+        <div class="meal-tabs" role="tablist" style="margin-top: 14px;">
+          <button id="tab-eval-almoco" class="meal-tab active" role="tab" aria-selected="true">
+            <i data-lucide="sun"></i>
+            <span>Almoço</span>
+          </button>
+          <button id="tab-eval-jantar" class="meal-tab" role="tab" aria-selected="false">
+            <i data-lucide="moon"></i>
+            <span>Jantar</span>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- Banner Informativo da Data Selecionada -->
+      <div class="date-summary-banner" id="date-summary-banner" style="background: var(--primary-light); border: 1px solid rgba(29, 78, 216, 0.2); border-radius: var(--radius-md); padding: 12px 14px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+          <span style="font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase;">Data Exibida</span>
+          <h3 id="selected-date-title" style="font-size: 15px; font-weight: 800; color: var(--text-main); margin: 2px 0 0 0;">Quarta-feira, 29 de Julho</h3>
+        </div>
+        <span id="selected-meal-tag" style="background: var(--primary); color: #ffffff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: var(--radius-full);">Almoço</span>
+      </div>
+
+      <!-- Lista dos 3 RUs com Cardápio e Avaliações da Data -->
+      <section class="ru-evaluations-grid" id="ru-evaluations-grid">
+        <!-- Renderizado dinamicamente pelo JS -->
+      </section>
+
+    </main>
+
+    <!-- Navegação Principal Bottom Nav -->
+    <nav class="bottom-nav" aria-label="Navegação Principal">
+      <a href="index.html" class="nav-item">
+        <i data-lucide="utensils"></i>
+        <span>Cardápio</span>
+      </a>
+      <a href="avaliacoes.html" class="nav-item active">
+        <i data-lucide="star"></i>
+        <span>Avaliações</span>
+      </a>
+      <a href="perfil.html" class="nav-item">
+        <i data-lucide="user"></i>
+        <span>Perfil</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <script src="js/avaliacoes.js"></script>
+</body>
+
+</html>

@@ -2734,3 +2734,53 @@ input:checked + .slider:before {
 .btn-reply-yt:hover {
   color: var(--text-main);
 }
+
+/* --- SELETOR DE DIAS E AVALIAÇÕES GERAIS --- */
+.day-pills-bar {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-top: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.day-pills-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.day-pill {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.day-pill-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.day-pill-tag {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.day-pill.active {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.day-pill.active .day-pill-name,
+.day-pill.active .day-pill-tag {
+  color: #ffffff;
+}
