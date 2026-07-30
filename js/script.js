@@ -289,8 +289,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Proteína Principal -->
             ${proteinDish ? `
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                <div style="font-size: 15px; font-weight: 800; color: var(--text-main);">
-                  <span style="color: var(--primary); margin-right: 4px;">•</span> ${proteinDish.name}
+                <div style="font-size: 14px; font-weight: 700; color: var(--text-main);">
+                  ${proteinDish.name}
                 </div>
                 ${proteinDish.tags && proteinDish.tags.length > 0 ? `
                   ${proteinDish.tags.map(t => `<span class="tag-allergen contains">${typeof t === 'object' ? t.label : t}</span>`).join('')}
@@ -301,8 +301,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Opção Vegetariana -->
             ${veggieDish ? `
               <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-                <div style="font-size: 13px; font-weight: 600; color: var(--text-muted);">
-                  <span style="color: #15803d; margin-right: 4px;">🌱</span> ${veggieDish.name}
+                <div style="font-size: 14px; font-weight: 700; color: var(--text-main);">
+                  ${veggieDish.name}
                 </div>
                 ${veggieDish.tags && veggieDish.tags.length > 0 ? `
                   ${veggieDish.tags.map(t => `<span class="tag-allergen contains">${typeof t === 'object' ? t.label : t}</span>`).join('')}
