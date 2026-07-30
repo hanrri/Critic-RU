@@ -271,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (dishes.length === 0) return '';
 
       const proteinDish = dishes.find(d => d.type === 'protein') || dishes[0];
+      const veggieDish = dishes.find(d => d.type === 'veggie');
 
       return `
         <article class="ru-card" data-ru-key="${ruKey}">
@@ -284,35 +285,38 @@ document.addEventListener('DOMContentLoaded', () => {
             </a>
           </div>
 
-          <div class="ru-featured-box">
-            <div class="dish-header">
-              <span class="badge badge-${proteinDish.type}">${proteinDish.badge}</span>
-              <button class="btn-favorite" aria-label="Favoritar ${proteinDish.name}" data-dish-id="${proteinDish.id}">
-                <i data-lucide="heart"></i>
-              </button>
-            </div>
-            
-            <h4 class="dish-name" style="font-size: 16px; font-weight: 800; color: var(--text-main); margin: 6px 0;">${proteinDish.name}</h4>
-            <p class="dish-description" style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">${proteinDish.desc}</p>
-            
-            ${proteinDish.tags && proteinDish.tags.length > 0 ? `
-              <div class="dish-tags">
-                ${proteinDish.tags.map(tag => {
-                  if (typeof tag === 'object') {
-                    return `<span class="tag-allergen ${tag.type}">${tag.label}</span>`;
-                  }
-                  return `<span class="tag-allergen neutral">${tag}</span>`;
-                }).join('')}
+          <div class="ru-featured-box" style="display: flex; flex-direction: column; gap: 8px;">
+            <!-- Proteína Principal em Vermelho -->
+            ${proteinDish ? `
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                <span class="badge badge-protein" style="font-size: 13px; font-weight: 800; padding: 6px 12px;">
+                  🍖 ${proteinDish.name}
+                </span>
+                ${proteinDish.tags && proteinDish.tags.length > 0 ? `
+                  ${proteinDish.tags.map(t => `<span class="tag-allergen contains">${typeof t === 'object' ? t.label : t}</span>`).join('')}
+                ` : ''}
               </div>
             ` : ''}
 
-            <div class="dish-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border-color);">
+            <!-- Opção Vegetariana em Verde -->
+            ${veggieDish ? `
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                <span class="badge badge-veggie" style="font-size: 13px; font-weight: 800; padding: 6px 12px;">
+                  🌿 ${veggieDish.name}
+                </span>
+                ${veggieDish.tags && veggieDish.tags.length > 0 ? `
+                  ${veggieDish.tags.map(t => `<span class="tag-allergen contains">${typeof t === 'object' ? t.label : t}</span>`).join('')}
+                ` : ''}
+              </div>
+            ` : ''}
+
+            <div class="dish-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; padding-top: 10px; border-top: 1px solid var(--border-color);">
               <div class="dish-rating" style="display: flex; align-items: center; gap: 6px;">
                 <div class="stars" style="display: flex; align-items: center; gap: 2px; color: var(--accent-star);">
                   <i data-lucide="star" style="width: 15px; height: 15px; fill: var(--accent-star);"></i>
-                  <span class="rating-score" style="font-size: 13px; font-weight: 800; color: var(--text-main);">${proteinDish.score}</span>
+                  <span class="rating-score" style="font-size: 13px; font-weight: 800; color: var(--text-main);">${proteinDish ? proteinDish.score : '4.8'}</span>
                 </div>
-                <span class="rating-count" style="font-size: 11px; color: var(--text-muted);">(${proteinDish.count} avaliações)</span>
+                <span class="rating-count" style="font-size: 11px; color: var(--text-muted);">(${proteinDish ? proteinDish.count : '100'} avaliações)</span>
               </div>
               <a href="detalhes-ru.html?ru=${ruKey}" class="btn-review" style="text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i data-lucide="message-square"></i>

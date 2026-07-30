@@ -181,22 +181,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (ruDetailScore) ruDetailScore.textContent = ruData.score;
   if (ruDetailCount) ruDetailCount.textContent = `(${ruData.count} avaliações)`;
 
-  // Renderizar itens do Cardápio Completo
+  // Renderizar itens do Cardápio Completo (Descrição apenas na Salada)
   if (ruMenuItemsList && ruData.dishes) {
-    ruMenuItemsList.innerHTML = ruData.dishes.map(dish => `
-      <div class="ru-full-menu-card">
-        <div class="dish-header">
-          <span class="badge badge-${dish.type}">${dish.badge}</span>
-        </div>
-        <h4 class="dish-name" style="font-size: 15px; font-weight: 800; color: var(--text-main); margin: 6px 0 4px 0;">${dish.name}</h4>
-        <p class="dish-description" style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">${dish.desc}</p>
-        ${dish.tags && dish.tags.filter(t => t.includes('Contém')).length > 0 ? `
-          <div class="dish-tags">
-            ${dish.tags.filter(t => t.includes('Contém')).map(tag => `<span class="tag-allergen contains">${tag}</span>`).join('')}
+    ruMenuItemsList.innerHTML = ruData.dishes.map(dish => {
+      const isSalada = dish.type === 'dessert' || dish.badge.includes('Salada') || dish.name.toLowerCase().includes('salada');
+      return `
+        <div class="ru-full-menu-card">
+          <div class="dish-header">
+            <span class="badge badge-${dish.type}">${dish.badge}</span>
           </div>
-        ` : ''}
-      </div>
-    `).join('');
+          <h4 class="dish-name" style="font-size: 15px; font-weight: 800; color: var(--text-main); margin: 6px 0 4px 0;">${dish.name}</h4>
+          ${isSalada && dish.desc ? `
+            <p class="dish-description" style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">${dish.desc}</p>
+          ` : ''}
+          ${dish.tags && dish.tags.filter(t => t.includes('Contém')).length > 0 ? `
+            <div class="dish-tags" style="margin-top: 4px;">
+              ${dish.tags.filter(t => t.includes('Contém')).map(tag => `<span class="tag-allergen contains">${tag}</span>`).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }).join('');
   }
 
   // --- LÓGICA DE AVALIAÇÃO E COMENTÁRIOS (Estilo YouTube) ---
