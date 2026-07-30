@@ -172,10 +172,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // Elementos da página
   const ruData = menuData[ruKey] || menuData['ru1-ccn'];
 
-  const ruDetailTitle = document.getElementById('ru-detail-title');
-  const ruDetailScore = document.getElementById('ru-detail-score');
-  const ruDetailCount = document.getElementById('ru-detail-count');
-  const ruMenuItemsList = document.getElementById('ru-menu-items-list');
+  const fromParam = urlParams.get('from');
+  const btnBackHeader = document.getElementById('btn-back-header');
+  const btnBackText = document.getElementById('btn-back-text');
+
+  if (btnBackHeader) {
+    if (fromParam === 'avaliacoes' || document.referrer.includes('avaliacoes.html')) {
+      btnBackHeader.setAttribute('href', 'avaliacoes.html');
+      if (btnBackText) btnBackText.textContent = 'Voltar às Avaliações';
+      btnBackHeader.addEventListener('click', (e) => {
+        if (window.history.length > 1) {
+          e.preventDefault();
+          window.history.back();
+        }
+      });
+    } else {
+      btnBackHeader.setAttribute('href', 'index.html');
+      if (btnBackText) btnBackText.textContent = 'Voltar ao Cardápio Geral';
+    }
+  }
 
   if (ruDetailTitle) ruDetailTitle.textContent = ruData.name;
   if (ruDetailScore) ruDetailScore.textContent = ruData.score;

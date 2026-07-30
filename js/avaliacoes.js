@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <!-- Botão para Ver Cardápio & Todas as Avaliações -->
-          <a href="detalhes-ru.html?ru=${ruKey}&date=${currentDate}" style="display: flex; align-items: center; justify-content: space-between; background: var(--primary-light); color: var(--primary); padding: 10px 14px; border-radius: var(--radius-md); font-size: 12px; font-weight: 700; text-decoration: none; transition: var(--transition);">
+          <a href="detalhes-ru.html?ru=${ruKey}&date=${currentDate}&from=avaliacoes" style="display: flex; align-items: center; justify-content: space-between; background: var(--primary-light); color: var(--primary); padding: 10px 14px; border-radius: var(--radius-md); font-size: 12px; font-weight: 700; text-decoration: none; transition: var(--transition);">
             <span>Ver Cardápio & Todas as Avaliações Deste Dia</span>
             <i data-lucide="chevron-right" style="width: 16px; height: 16px;"></i>
           </a>
