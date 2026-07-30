@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CRU - Detalhes do RU & Avaliações | Critic RU UFPI</title>
-  <meta name="description" content="Veja o cardápio completo do Restaurante Universitário da UFPI, avaliações dos alunos e envie a sua opinião.">
+  <title>CRU - Cardápio & Avaliações do RU | Critic RU UFPI</title>
+  <meta name="description" content="Veja o cardápio completo do RU e leia/envie avaliações dos pratos no Critic RU UFPI.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script src="https://unpkg.com/lucide@latest"></script>
-
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <div id="app" class="app-container">
 
     <main class="main-content" style="padding-top: 16px;">
-      
-      <!-- Botão Voltar -->
-      <a href="index.html" class="btn-back-home" style="color: var(--primary); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 12px; font-weight: 600; margin-bottom: 16px;">
+
+      <!-- Voltar -->
+      <a href="index.html" class="btn-back-home" style="color: var(--primary); display: inline-flex; align-items: center; gap: 6px; text-decoration: none; font-size: 13px; font-weight: 700; margin-bottom: 16px;">
         <i data-lucide="arrow-left"></i>
         <span>Voltar ao Cardápio Geral</span>
       </a>
@@ -29,146 +30,110 @@
       <!-- Cabeçalho do RU -->
       <section class="ru-detail-header-card">
         <div class="ru-detail-info">
-          <div class="ru-detail-icon-box">
-            <i data-lucide="map-pin"></i>
-          </div>
-          <div>
-            <h1 id="ru-detail-title" class="ru-detail-title">RU 1 - CCN</h1>
-            <p id="ru-detail-subtitle" class="ru-detail-subtitle">Campus Ministro Petrônio Portella • UFPI</p>
-          </div>
+          <span class="ru-detail-badge" id="ru-detail-campus">Campus Ministro Petrônio Portella</span>
+          <h1 id="ru-detail-title" class="ru-detail-title">RU 1 - CCN</h1>
+          <p id="ru-detail-sub" class="ru-detail-sub">Restaurante Universitário • Centro de Ciências Natureis</p>
         </div>
-        <div class="ru-detail-meta">
-          <span class="ru-status-tag open"><i data-lucide="check-circle-2"></i> Aberto Agora</span>
-          <span class="ru-detail-rating">⭐ <strong id="ru-detail-score">4.8</strong> (142 avaliações)</span>
+        <div class="ru-detail-stats">
+          <div class="stat-box">
+            <span class="stat-score" id="ru-detail-score">4.8 ⭐</span>
+            <span class="stat-count" id="ru-detail-count">142 avaliações</span>
+          </div>
+          <span class="ru-status-tag" style="background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: var(--radius-full); font-weight: 700; font-size: 11px; display: inline-flex; align-items: center; gap: 4px;">
+            <i data-lucide="check-circle-2"></i> Aberto Hoje
+          </span>
         </div>
       </section>
 
-      <!-- Tabs Almoço / Jantar do RU -->
-      <section class="date-meal-bar" style="margin-bottom: 16px;">
-        <div class="meal-tabs" role="tablist" style="width: 100%;">
-          <button id="tab-ru-almoco" class="meal-tab active" style="flex: 1;">
-            <i data-lucide="sun"></i>
-            <span>Almoço Hoje</span>
-          </button>
-          <button id="tab-ru-jantar" class="meal-tab" style="flex: 1;">
-            <i data-lucide="moon"></i>
-            <span>Jantar Hoje</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- Cardápio Completo do RU Selecionado -->
+      <!-- Cardápio Completo do RU -->
       <section class="ru-full-menu-section">
-        <div class="section-header">
-          <h2 class="section-title"><i data-lucide="utensils" style="width: 18px; height: 18px; color: var(--primary); display: inline-block; vertical-align: middle;"></i> Cardápio Servido Hoje</h2>
+        <div class="section-header" style="margin-bottom: 14px;">
+          <h2 class="section-title" style="display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="utensils" style="color: var(--primary);"></i>
+            <span>Cardápio Completo do Dia</span>
+          </h2>
+          <span id="ru-meal-label" style="font-size: 11px; font-weight: 700; background: var(--primary-light); color: var(--primary); padding: 4px 10px; border-radius: var(--radius-full);">Almoço</span>
         </div>
 
-        <div id="ru-full-menu-list" class="ru-full-menu-list">
-          <!-- Renderizado via JavaScript -->
-        </div>
-      </section>
-
-      <!-- Resumo da Pontuação e Barra estilo Amazon/YouTube -->
-      <section class="reviews-summary-card">
-        <div class="summary-score-column">
-          <span class="big-score-number" id="avg-score-big">4.8</span>
-          <div class="stars-big">⭐⭐⭐⭐⭐</div>
-          <span class="total-reviews-lbl" id="total-reviews-text">Baseado em 142 avaliações</span>
-        </div>
-
-        <div class="summary-bars-column">
-          <div class="score-bar-item">
-            <span>5 ⭐</span>
-            <div class="bar-track"><div class="bar-fill" style="width: 82%;"></div></div>
-            <span>82%</span>
-          </div>
-          <div class="score-bar-item">
-            <span>4 ⭐</span>
-            <div class="bar-track"><div class="bar-fill" style="width: 12%;"></div></div>
-            <span>12%</span>
-          </div>
-          <div class="score-bar-item">
-            <span>3 ⭐</span>
-            <div class="bar-track"><div class="bar-fill" style="width: 4%;"></div></div>
-            <span>4%</span>
-          </div>
-          <div class="score-bar-item">
-            <span>2 ⭐</span>
-            <div class="bar-track"><div class="bar-fill" style="width: 1%;"></div></div>
-            <span>1%</span>
-          </div>
-          <div class="score-bar-item">
-            <span>1 ⭐</span>
-            <div class="bar-track"><div class="bar-fill" style="width: 1%;"></div></div>
-            <span>1%</span>
-          </div>
+        <div id="ru-menu-items-list" class="ru-menu-items-list">
+          <!-- Renderizado dinamicamente pelo JS -->
         </div>
       </section>
 
-      <!-- Formulário "Faça a sua avaliação" (Estilo YouTube / Comentários) -->
-      <section class="inline-review-form-card">
-        <div class="form-card-header">
-          <div class="user-avatar-form">H</div>
-          <div>
-            <h3 class="form-title">Faça a sua avaliação</h3>
-            <p class="form-subtitle">Compartilhe sua experiência sobre o tempero, fila e refeição</p>
+      <hr style="border: none; border-top: 1px solid var(--border-color); margin: 24px 0;">
+
+      <!-- Seção de Comentários e Avaliações (Estilo YouTube / E-Commerce) -->
+      <section id="comments-section" class="comments-section">
+        
+        <div class="comments-header">
+          <h3 class="comments-count-title">
+            <span id="comments-count">77</span> Avaliações e Comentários
+          </h3>
+          <button class="btn-sort-comments" id="btn-sort-comments">
+            <i data-lucide="sliders-horizontal"></i>
+            <span>Ordenar por</span>
+          </button>
+        </div>
+
+        <!-- Formulário "Faça a sua avaliação" (Estilo YouTube) -->
+        <div class="add-review-box">
+          <div class="add-review-user-row">
+            <div class="user-avatar-yt">H</div>
+            <div class="add-review-inputs">
+              
+              <!-- Seletor de Estrelas -->
+              <div class="yt-star-picker">
+                <span class="yt-picker-label">Sua nota:</span>
+                <div id="yt-star-group" class="yt-star-group">
+                  <button type="button" class="yt-star-btn" data-value="1" aria-label="1 estrela"><i data-lucide="star"></i></button>
+                  <button type="button" class="yt-star-btn" data-value="2" aria-label="2 estrelas"><i data-lucide="star"></i></button>
+                  <button type="button" class="yt-star-btn" data-value="3" aria-label="3 estrelas"><i data-lucide="star"></i></button>
+                  <button type="button" class="yt-star-btn" data-value="4" aria-label="4 estrelas"><i data-lucide="star"></i></button>
+                  <button type="button" class="yt-star-btn" data-value="5" aria-label="5 estrelas"><i data-lucide="star"></i></button>
+                </div>
+                <span id="yt-star-text" class="yt-rating-text">Selecione as estrelas</span>
+              </div>
+
+              <!-- Tags Rápidas -->
+              <div class="yt-quick-tags">
+                <button type="button" class="yt-tag-chip">😋 Saboroso</button>
+                <button type="button" class="yt-tag-chip">🔥 Quentinho</button>
+                <button type="button" class="yt-tag-chip">🧂 Pouco Sal</button>
+                <button type="button" class="yt-tag-chip">⏳ Fila Demorada</button>
+                <button type="button" class="yt-tag-chip">⚡ Atendimento Rápido</button>
+              </div>
+
+              <!-- Input de Texto do Comentário -->
+              <div class="yt-comment-input-wrapper">
+                <textarea id="yt-comment-text" rows="2" placeholder="Adicione um comentário sobre a refeição de hoje..."></textarea>
+              </div>
+
+              <!-- Ações (Cancelar e Publicar) -->
+              <div class="add-review-actions">
+                <button type="button" id="btn-cancel-yt-comment" class="btn-yt-cancel">Cancelar</button>
+                <button type="button" id="btn-submit-yt-comment" class="btn-yt-submit">Publicar Avaliação</button>
+              </div>
+
+            </div>
           </div>
         </div>
 
-        <div class="inline-star-picker">
-          <span class="picker-label">Sua nota para o RU:</span>
-          <div id="inline-star-group" class="star-input-group">
-            <button class="inline-star-btn" data-value="1"><i data-lucide="star"></i></button>
-            <button class="inline-star-btn" data-value="2"><i data-lucide="star"></i></button>
-            <button class="inline-star-btn" data-value="3"><i data-lucide="star"></i></button>
-            <button class="inline-star-btn" data-value="4"><i data-lucide="star"></i></button>
-            <button class="inline-star-btn" data-value="5"><i data-lucide="star"></i></button>
-          </div>
-          <span id="inline-star-text" class="rating-feedback-text">Toque para dar estrelas</span>
+        <!-- Feed de Comentários / Avaliações de Alunos -->
+        <div id="comments-feed" class="comments-feed">
+          <!-- Renderizado dinamicamente via JS -->
         </div>
 
-        <div class="inline-tags-group">
-          <span class="picker-label">Tags rápidas:</span>
-          <div class="tags-container">
-            <button type="button" class="tag-chip inline-tag">😋 Muito Saboroso</button>
-            <button type="button" class="tag-chip inline-tag">🔥 Comida Quentinha</button>
-            <button type="button" class="tag-chip inline-tag">⚡ Fila Rápida</button>
-            <button type="button" class="tag-chip inline-tag">🧂 Pouco Sal</button>
-            <button type="button" class="tag-chip inline-tag">⏳ Fila Demorada</button>
-          </div>
-        </div>
-
-        <div class="inline-textarea-group">
-          <textarea id="inline-comment-input" rows="3" placeholder="Escreva seu comentário sobre o prato de hoje ou atendimento..."></textarea>
-        </div>
-
-        <button id="btn-publish-inline-review" class="btn-publish-review">
-          <i data-lucide="send"></i>
-          <span>Publicar Avaliação</span>
-        </button>
-      </section>
-
-      <!-- Feed Scrollável de Avaliações / Comentários dos Alunos -->
-      <section class="ru-comments-feed-section">
-        <div class="feed-header">
-          <h2 class="section-title"><i data-lucide="message-square" style="width: 18px; height: 18px; color: var(--primary); display: inline-block; vertical-align: middle;"></i> Opinião dos Alunos</h2>
-          <span class="comments-count-tag" id="comments-count">142 comentários</span>
-        </div>
-
-        <div id="comments-feed-list" class="comments-feed-list">
-          <!-- Avaliações renderizadas via JS -->
-        </div>
       </section>
 
     </main>
 
-    <!-- Barra de Navegação Inferior -->
+    <!-- Navegação Principal -->
     <nav class="bottom-nav" aria-label="Navegação Principal">
       <a href="index.html" class="nav-item">
         <i data-lucide="utensils"></i>
         <span>Cardápio</span>
       </a>
-      <a href="avaliacoes-historico.html" class="nav-item">
+      <a href="minhas-avaliacoes.html" class="nav-item">
         <i data-lucide="star"></i>
         <span>Avaliações</span>
       </a>
@@ -180,6 +145,7 @@
 
   </div>
 
-  <script src="js/script.js"></script>
+  <script src="js/detalhes-ru.js"></script>
 </body>
+
 </html>
