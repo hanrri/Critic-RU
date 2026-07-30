@@ -61,7 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   // Elementos da página
-  const ruData = menuData[ruKey] || menuData['ru1-ccn'];
+  const ruData = menuData[ruKey] || menuData['ru1-ccn'] || {};
+
+  const ruDetailTitle = document.getElementById('ru-detail-title');
+  const ruDetailScore = document.getElementById('ru-detail-score');
+  const ruDetailCount = document.getElementById('ru-detail-count');
+  const ruMenuItemsList = document.getElementById('ru-menu-items-list');
 
   const fromParam = urlParams.get('from');
   const btnBackHeader = document.getElementById('btn-back-header');
@@ -86,14 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  if (ruDetailTitle) ruDetailTitle.textContent = ruData.name;
-  if (ruDetailScore) ruDetailScore.textContent = ruData.score;
-  if (ruDetailCount) ruDetailCount.textContent = `(${ruData.count} avaliações)`;
+  if (ruDetailTitle && ruData.name) ruDetailTitle.textContent = ruData.name;
+  if (ruDetailScore && ruData.score) ruDetailScore.textContent = ruData.score;
+  if (ruDetailCount && ruData.count) ruDetailCount.textContent = `(${ruData.count} avaliações)`;
 
   // Renderizar itens do Cardápio Completo (Descrição apenas na Salada + Botão de Favoritar)
-  if (ruMenuItemsList && ruData.dishes) {
-    ruMenuItemsList.innerHTML = ruData.dishes.map(dish => {
-      const isSalada = dish.type === 'dessert' || dish.badge.includes('Salada') || dish.name.toLowerCase().includes('salada');
+  const dishes = ruData.dishes || ruData.almoco || [];
+  if (ruMenuItemsList && dishes.length > 0) {
+    ruMenuItemsList.innerHTML = dishes.map(dish => {
+      const isSalada = (dish.type === 'dessert') || (dish.badge && dish.badge.includes('Salada')) || (dish.name && dish.name.toLowerCase().includes('salada'));
       const isFavoritable = dish.type === 'protein' || dish.type === 'veggie';
 
       return `
@@ -110,9 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
           ${isSalada && dish.desc ? `
             <p class="dish-description" style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">${dish.desc}</p>
           ` : ''}
-          ${dish.tags && dish.tags.filter(t => t.includes('Contém')).length > 0 ? `
+          ${dish.tags && dish.tags.filter(t => (typeof t === 'string' ? t : t.label || '').includes('Contém')).length > 0 ? `
             <div class="dish-tags" style="margin-top: 4px;">
-              ${dish.tags.filter(t => t.includes('Contém')).map(tag => `<span class="tag-allergen contains">${tag}</span>`).join('')}
+              ${dish.tags.filter(t => (typeof t === 'string' ? t : t.label || '').includes('Contém')).map(tag => `<span class="tag-allergen contains">${typeof tag === 'string' ? tag : tag.label}</span>`).join('')}
             </div>
           ` : ''}
         </div>
