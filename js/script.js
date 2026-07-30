@@ -49,35 +49,32 @@ document.addEventListener('DOMContentLoaded', () => {
           tags: [
             { label: '🌱 Vegetariano', type: 'free' },
             { label: '⚠️ Contém Glúten', type: 'contains' },
-            { label: '⚠️ Contém Lactose', type: 'contains' },
-            { label: 'Sem Soja', type: 'free' }
+            { label: '⚠️ Contém Lactose', type: 'contains' }
           ]
         },
         {
           id: 103,
           type: 'side',
           badge: 'Acompanhamentos',
-          name: 'Farofa Especial & Creme de Abóbora¹',
-          desc: 'Farofa de mandioca crocante e creme de abóbora temperado.',
+          name: 'Farofa Especial & Feijão Carioca',
+          desc: 'Farofa de mandioca crocante e feijão carioca temperado.',
           score: 4.6,
           count: 65,
           tags: [
-            { label: '⚠️ Contém Glúten', type: 'contains' },
-            { label: '⚠️ Contém Lactose', type: 'contains' }
+            { label: '⚠️ Contém Glúten', type: 'contains' }
           ]
         },
         {
           id: 104,
           type: 'dessert',
           badge: 'Salada & Sobremesa',
-          name: 'Salada Crua & Melão Fresco (RU 1)',
-          desc: 'Salada: Acelga + Couve + Beterraba + Maçã + Salsa. Sobremesa: Fatia de Melão.',
+          name: 'Salada Crua & Melão Fresco',
+          desc: 'Salada: Acelga + Couve + Beterraba + Maçã. Sobremesa: Fatia de Melão.',
           score: 4.7,
           count: 53,
           tags: [
             { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' },
-            { label: 'Sem Soja', type: 'free' }
+            { label: 'Sem Lactose', type: 'free' }
           ]
         }
       ],
@@ -105,8 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
           count: 72,
           tags: [
             { label: '🌱 Vegetariano', type: 'free' },
-            { label: '⚠️ Contém Lactose', type: 'contains' },
-            { label: 'Sem Glúten', type: 'free' }
+            { label: '⚠️ Contém Lactose', type: 'contains' }
           ]
         }
       ]
@@ -119,26 +115,26 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 201,
           type: 'protein',
           badge: 'Proteína Principal',
-          name: 'Galinhada Caseira',
-          desc: 'Prato tradicional com arroz cozido, frango desfiado temperado e ervas.',
+          name: 'Frango Assado com Ervas & Batata Doce',
+          desc: 'Coxa e sobrecoxa assada ao forno com ervas finas e batata doce.',
           score: 4.7,
-          count: 120,
+          count: 130,
           tags: [
             { label: 'Sem Glúten', type: 'free' },
-            { label: 'Sem Lactose', type: 'free' }
+            { label: 'Sem Lactose', type: 'free' },
+            { label: 'Rico em Proteína', type: 'neutral' }
           ]
         },
         {
           id: 202,
           type: 'veggie',
           badge: 'Opção Vegetariana',
-          name: 'Arroz Colorido + Creme de Abóbora¹',
-          desc: 'Arroz soltinho com legumes e creme de abóbora cremoso.',
-          score: 4.9,
-          count: 91,
+          name: 'Lasanha de Abobrinha com Queijo Branco',
+          desc: 'Camadas de abobrinha grelhada com molho de tomate caseiro e ricota.',
+          score: 4.8,
+          count: 95,
           tags: [
             { label: '🌱 Vegetariano', type: 'free' },
-            { label: '⚠️ Contém Glúten', type: 'contains' },
             { label: '⚠️ Contém Lactose', type: 'contains' }
           ]
         },
@@ -146,17 +142,43 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 203,
           type: 'dessert',
           badge: 'Salada & Sobremesa',
-          name: 'Salada Crua & Laranja (RU 2)',
-          desc: 'Salada: Acelga + Couve + Beterraba + Maçã + Salsa. Sobremesa: Laranja docinha.',
+          name: 'Salada de Folhas & Laranja Fresca',
+          desc: 'Salada verde com tomate e vinagrete. Sobremesa: Laranja fatiada.',
           score: 4.8,
-          count: 60,
+          count: 64,
           tags: [
             { label: 'Sem Glúten', type: 'free' },
             { label: 'Sem Lactose', type: 'free' }
           ]
         }
       ],
-      jantar: []
+      jantar: [
+        {
+          id: 204,
+          type: 'protein',
+          badge: 'Proteína Principal',
+          name: 'Escondidinho de Carne Moída com Macaxeira',
+          desc: 'Purê cremoso de macaxeira recheado com carne moída bem temperada.',
+          score: 4.9,
+          count: 110,
+          tags: [
+            { label: 'Sem Glúten', type: 'free' }
+          ]
+        },
+        {
+          id: 205,
+          type: 'veggie',
+          badge: 'Opção Vegetariana',
+          name: 'Hambúrguer de Lentilha',
+          desc: 'Hambúrguer de lentilha grelhado com molho especial de ervas.',
+          score: 4.7,
+          count: 80,
+          tags: [
+            { label: '🌱 Vegano', type: 'free' },
+            { label: 'Sem Lactose', type: 'free' }
+          ]
+        }
+      ]
     },
 
     'ru3-cca': {
@@ -166,10 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 301,
           type: 'protein',
           badge: 'Proteína Principal',
-          name: 'Galinhada Caseira',
-          desc: 'Prato tradicional com arroz cozido, frango desfiado temperado e ervas.',
+          name: 'Bife Acebolado com Vinagrete Especial',
+          desc: 'Bife bovino macio acebolado acompanhado de vinagrete fresco.',
           score: 4.8,
-          count: 98,
+          count: 115,
           tags: [
             { label: 'Sem Glúten', type: 'free' },
             { label: 'Sem Lactose', type: 'free' }
@@ -179,13 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 302,
           type: 'veggie',
           badge: 'Opção Vegetariana',
-          name: 'Arroz Colorido + Creme de Abóbora¹',
-          desc: 'Arroz soltinho com legumes e creme de abóbora cremoso.',
+          name: 'Panqueca de Ricota e Espinafre',
+          desc: 'Massa leve recheada com creme de ricota fresca e espinafre.',
           score: 4.8,
-          count: 75,
+          count: 82,
           tags: [
             { label: '🌱 Vegetariano', type: 'free' },
-            { label: '⚠️ Contém Glúten', type: 'contains' },
             { label: '⚠️ Contém Lactose', type: 'contains' }
           ]
         },
@@ -193,17 +214,30 @@ document.addEventListener('DOMContentLoaded', () => {
           id: 303,
           type: 'dessert',
           badge: 'Salada & Sobremesa',
-          name: 'Salada Crua & Doce de Goiaba (RU 3)',
-          desc: 'Salada: Acelga + Couve + Beterraba + Maçã + Salsa. Sobremesa: Doce de Goiaba.',
+          name: 'Salada Tropical & Doce de Goiaba',
+          desc: 'Salada de acelga, cenoura e milho. Sobremesa: Doce de goiaba.',
           score: 4.9,
-          count: 84,
+          count: 78,
           tags: [
             { label: 'Sem Glúten', type: 'free' },
             { label: 'Sem Lactose', type: 'free' }
           ]
         }
       ],
-      jantar: []
+      jantar: [
+        {
+          id: 304,
+          type: 'protein',
+          badge: 'Proteína Principal',
+          name: 'Sopa de Carne com Legumes & Macarrão',
+          desc: 'Sopa reforçada com pedaços de carne, batata, cenoura e macarrão.',
+          score: 4.7,
+          count: 90,
+          tags: [
+            { label: '⚠️ Contém Glúten', type: 'contains' }
+          ]
+        }
+      ]
     }
   };
 
@@ -214,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tabAlmoco.setAttribute('aria-selected', 'true');
       tabJantar.classList.remove('active');
       tabJantar.setAttribute('aria-selected', 'false');
-      if (ruStatusText) ruStatusText.textContent = 'Restaurante Aberto para o Almoço (11:00 - 14:00)';
+      if (ruStatusText) ruStatusText.textContent = 'Restaurantes Abertos para o Almoço (11:00 - 14:00)';
       renderMenu(currentMealType);
     });
 
@@ -224,13 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tabJantar.setAttribute('aria-selected', 'true');
       tabAlmoco.classList.remove('active');
       tabAlmoco.setAttribute('aria-selected', 'false');
-      if (ruStatusText) ruStatusText.textContent = 'Restaurante Aberto para o Jantar (17:00 - 19:00)';
-      renderMenu(currentMealType);
-    });
-  }
-
-  if (ruSelect) {
-    ruSelect.addEventListener('change', () => {
+      if (ruStatusText) ruStatusText.textContent = 'Restaurantes Abertos para o Jantar (17:00 - 19:00)';
       renderMenu(currentMealType);
     });
   }
@@ -239,48 +267,114 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuGrid = document.getElementById('menu-grid');
     if (!menuGrid) return;
 
-    const ruValue = ruSelect ? ruSelect.value : 'ru1-ccn';
-    const ruData = menuData[ruValue] || menuData['ru1-ccn'];
-    const dishes = (ruData[mealType] && ruData[mealType].length > 0) ? ruData[mealType] : ruData['almoco'];
+    const ruKeys = Object.keys(menuData);
 
-    menuGrid.innerHTML = dishes.map(dish => `
-      <article class="dish-card" data-dish-id="${dish.id}">
-        <div class="dish-header">
-          <span class="badge badge-${dish.type}">${dish.badge}</span>
-          <button class="btn-favorite" aria-label="Favoritar ${dish.name}" data-dish-id="${dish.id}">
-            <i data-lucide="heart"></i>
-          </button>
-        </div>
-        
-        <h3 class="dish-name">${dish.name}</h3>
-        <p class="dish-description">${dish.desc}</p>
-        
-        ${dish.tags && dish.tags.length > 0 ? `
-          <div class="dish-tags">
-            ${dish.tags.map(tag => {
-              if (typeof tag === 'object') {
-                return `<span class="tag-allergen ${tag.type}">${tag.label}</span>`;
-              }
-              return `<span class="tag-allergen neutral">${tag}</span>`;
-            }).join('')}
-          </div>
-        ` : ''}
+    menuGrid.innerHTML = ruKeys.map(ruKey => {
+      const ru = menuData[ruKey];
+      const dishes = (ru[mealType] && ru[mealType].length > 0) ? ru[mealType] : (ru['almoco'] || []);
 
-        <div class="dish-footer">
-          <div class="dish-rating">
-            <div class="stars">
-              <i data-lucide="star" class="filled"></i>
-              <span class="rating-score">${dish.score}</span>
+      if (dishes.length === 0) return '';
+
+      const proteinDish = dishes.find(d => d.type === 'protein') || dishes[0];
+      const otherDishes = dishes.filter(d => d.id !== proteinDish.id);
+
+      return `
+        <article class="ru-card" data-ru-key="${ruKey}">
+          <div class="ru-card-header">
+            <div class="ru-title-group">
+              <i data-lucide="map-pin" class="ru-icon"></i>
+              <h3 class="ru-name">${ru.name}</h3>
             </div>
-            <span class="rating-count">(${dish.count} avaliações)</span>
+            <span class="ru-status-tag">
+              <i data-lucide="check-circle-2"></i> Cardápio Atualizado
+            </span>
           </div>
-          <button class="btn-review" data-dish-id="${dish.id}" data-dish-name="${dish.name}">
-            <i data-lucide="message-square-plus"></i>
-            <span>Avaliar</span>
-          </button>
-        </div>
-      </article>
-    `).join('');
+
+          <div class="ru-featured-box">
+            <div class="dish-header">
+              <span class="badge badge-${proteinDish.type}">${proteinDish.badge}</span>
+              <button class="btn-favorite" aria-label="Favoritar ${proteinDish.name}" data-dish-id="${proteinDish.id}">
+                <i data-lucide="heart"></i>
+              </button>
+            </div>
+            
+            <h4 class="dish-name" style="font-size: 16px; font-weight: 800; color: var(--text-main); margin: 6px 0;">${proteinDish.name}</h4>
+            <p class="dish-description" style="font-size: 12px; color: var(--text-muted); margin-bottom: 10px;">${proteinDish.desc}</p>
+            
+            ${proteinDish.tags && proteinDish.tags.length > 0 ? `
+              <div class="dish-tags">
+                ${proteinDish.tags.map(tag => {
+                  if (typeof tag === 'object') {
+                    return `<span class="tag-allergen ${tag.type}">${tag.label}</span>`;
+                  }
+                  return `<span class="tag-allergen neutral">${tag}</span>`;
+                }).join('')}
+              </div>
+            ` : ''}
+
+            <div class="dish-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border-color);">
+              <div class="dish-rating" style="display: flex; align-items: center; gap: 6px;">
+                <div class="stars" style="display: flex; align-items: center; gap: 2px; color: var(--accent-star);">
+                  <i data-lucide="star" style="width: 15px; height: 15px; fill: var(--accent-star);"></i>
+                  <span class="rating-score" style="font-size: 13px; font-weight: 800; color: var(--text-main);">${proteinDish.score}</span>
+                </div>
+                <span class="rating-count" style="font-size: 11px; color: var(--text-muted);">(${proteinDish.count} avaliações)</span>
+              </div>
+              <button class="btn-review" data-dish-id="${proteinDish.id}" data-dish-name="${proteinDish.name}">
+                <i data-lucide="message-square-plus"></i>
+                <span>Avaliar</span>
+              </button>
+            </div>
+          </div>
+
+          ${otherDishes.length > 0 ? `
+            <button class="btn-toggle-accordion" aria-expanded="false">
+              <span>Ver Cardápio Completo (${otherDishes.length} itens a mais)</span>
+              <i data-lucide="chevron-down" class="accordion-arrow"></i>
+            </button>
+
+            <div class="ru-expanded-panel hidden">
+              ${otherDishes.map(dish => `
+                <div class="sub-dish-card">
+                  <div class="dish-header">
+                    <span class="badge badge-${dish.type}">${dish.badge}</span>
+                    <button class="btn-favorite" aria-label="Favoritar ${dish.name}" data-dish-id="${dish.id}">
+                      <i data-lucide="heart"></i>
+                    </button>
+                  </div>
+
+                  <h5 class="dish-name" style="font-size: 14px; font-weight: 700; color: var(--text-main); margin: 4px 0;">${dish.name}</h5>
+                  <p class="dish-description" style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">${dish.desc}</p>
+
+                  ${dish.tags && dish.tags.length > 0 ? `
+                    <div class="dish-tags">
+                      ${dish.tags.map(tag => {
+                        if (typeof tag === 'object') {
+                          return `<span class="tag-allergen ${tag.type}">${tag.label}</span>`;
+                        }
+                        return `<span class="tag-allergen neutral">${tag}</span>`;
+                      }).join('')}
+                    </div>
+                  ` : ''}
+
+                  <div class="dish-footer" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border-color);">
+                    <div class="dish-rating" style="display: flex; align-items: center; gap: 4px;">
+                      <i data-lucide="star" style="width: 14px; height: 14px; color: var(--accent-star); fill: var(--accent-star);"></i>
+                      <span class="rating-score" style="font-size: 12px; font-weight: 800;">${dish.score}</span>
+                      <span class="rating-count" style="font-size: 10px; color: var(--text-muted);">(${dish.count})</span>
+                    </div>
+                    <button class="btn-review" data-dish-id="${dish.id}" data-dish-name="${dish.name}">
+                      <i data-lucide="message-square-plus"></i>
+                      <span>Avaliar</span>
+                    </button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          ` : ''}
+        </article>
+      `;
+    }).join('');
 
     if (window.lucide) {
       window.lucide.createIcons();
@@ -305,6 +399,28 @@ document.addEventListener('DOMContentLoaded', () => {
           btn.style.color = '#ef4444';
         } else {
           btn.style.color = '';
+        }
+      });
+    });
+
+    document.querySelectorAll('.btn-toggle-accordion').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const ruCard = btn.closest('.ru-card');
+        const panel = ruCard.querySelector('.ru-expanded-panel');
+        const isHidden = panel.classList.contains('hidden');
+        const textSpan = btn.querySelector('span');
+
+        if (isHidden) {
+          panel.classList.remove('hidden');
+          btn.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+          if (textSpan) textSpan.textContent = 'Recolher Cardápio';
+        } else {
+          panel.classList.add('hidden');
+          btn.classList.remove('active');
+          btn.setAttribute('aria-expanded', 'false');
+          const count = panel.children.length;
+          if (textSpan) textSpan.textContent = `Ver Cardápio Completo (${count} itens a mais)`;
         }
       });
     });

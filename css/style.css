@@ -2183,3 +2183,124 @@ input:checked + .slider:before {
   font-weight: 600;
   margin-bottom: 12px;
 }
+
+/* ==========================================================================
+   RU CARDS & ACCORDION (Tela Inicial - Todos os RUs)
+   ========================================================================== */
+
+.ru-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+  margin-bottom: 20px;
+  transition: var(--transition);
+}
+
+.ru-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.ru-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.ru-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ru-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+}
+
+.ru-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.ru-status-tag {
+  font-size: 10px;
+  font-weight: 700;
+  background: #dcfce7;
+  color: #166534;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ru-status-tag svg,
+.ru-status-tag i {
+  width: 12px;
+  height: 12px;
+}
+
+.ru-featured-box {
+  background: var(--bg-app);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  border: 1px solid var(--border-color);
+}
+
+.btn-toggle-accordion {
+  width: 100%;
+  margin-top: 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid rgba(29, 78, 216, 0.2);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: var(--transition);
+}
+
+.btn-toggle-accordion:hover {
+  background: #dbeafe;
+}
+
+.accordion-arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s ease;
+}
+
+.btn-toggle-accordion.active .accordion-arrow {
+  transform: rotate(180deg);
+}
+
+.ru-expanded-panel {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.ru-expanded-panel.hidden {
+  display: none !important;
+}
+
+.sub-dish-card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+}

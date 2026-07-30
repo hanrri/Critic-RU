@@ -43,19 +43,6 @@
                     </a>
                 </div>
             </div>
-
-            <div class="ru-selector-wrapper">
-                <label for="ru-select" class="visually-hidden">Selecione o RU</label>
-                <div class="select-box">
-                    <i data-lucide="map-pin" class="select-icon"></i>
-                    <select id="ru-select" aria-label="Selecione o Restaurante Universitário">
-                        <option value="ru1-ccn" selected>RU 1 - CCN</option>
-                        <option value="ru2-rosadosventos">RU 2 - Espaço Rosa dos Ventos</option>
-                        <option value="ru3-cca">RU 3 - CCA</option>
-                    </select>
-                    <i data-lucide="chevron-down" class="select-arrow"></i>
-                </div>
-            </div>
         </header>
 
         <main class="main-content">
@@ -84,130 +71,16 @@
 
             <div class="ru-status-banner open">
                 <span class="status-indicator"></span>
-                <span id="ru-status-text">Restaurante Aberto para o Almoço</span>
+                <span id="ru-status-text">Restaurantes Abertos para o Almoço</span>
             </div>
 
             <section id="menu-section" class="menu-section">
                 <div class="section-header">
-                    <h2 class="section-title">Cardápio do Dia</h2>
+                    <h2 class="section-title">Cardápio do Dia • RUs UFPI</h2>
                     <span class="menu-updated-tag"><i data-lucide="check-circle-2"></i> Atualizado</span>
                 </div>
 
                 <div id="menu-grid" class="menu-grid">
-
-                    <article class="dish-card" data-dish-id="1">
-                        <div class="dish-header">
-                            <span class="badge badge-protein">Proteína Principal</span>
-                            <button class="btn-favorite" aria-label="Favoritar Frango Grelhado" data-dish-id="1">
-                                <i data-lucide="heart"></i>
-                            </button>
-                        </div>
-
-                        <h3 class="dish-name">Frango Grelhado ao Molho de Ervas</h3>
-                        <p class="dish-description">Peito de frango temperado com ervas finas e grelhado na chapa.</p>
-
-                        <div class="dish-tags">
-                            <span class="tag-allergen">Sem Glúten</span>
-                            <span class="tag-allergen">Rico em Proteína</span>
-                        </div>
-
-                        <div class="dish-footer">
-                            <div class="dish-rating">
-                                <div class="stars">
-                                    <i data-lucide="star" class="filled"></i>
-                                    <span class="rating-score">4.7</span>
-                                </div>
-                                <span class="rating-count">(128 avaliações)</span>
-                            </div>
-                            <button class="btn-review" data-dish-id="1"
-                                data-dish-name="Frango Grelhado ao Molho de Ervas">
-                                <i data-lucide="message-square-plus"></i>
-                                <span>Avaliar</span>
-                            </button>
-                        </div>
-                    </article>
-
-                    <article class="dish-card" data-dish-id="2">
-                        <div class="dish-header">
-                            <span class="badge badge-veggie">Opção Vegetariana</span>
-                            <button class="btn-favorite" aria-label="Favoritar Estrogonofe de Grão de Bico"
-                                data-dish-id="2">
-                                <i data-lucide="heart"></i>
-                            </button>
-                        </div>
-
-                        <h3 class="dish-name">Estrogonofe de Grão de Bico</h3>
-                        <p class="dish-description">Grão de bico cremoso com cogumelos e molho especial vegetal.</p>
-
-                        <div class="dish-tags">
-                            <span class="tag-allergen">Vegano</span>
-                            <span class="tag-allergen">Sem Lactose</span>
-                        </div>
-
-                        <div class="dish-footer">
-                            <div class="dish-rating">
-                                <div class="stars">
-                                    <i data-lucide="star" class="filled"></i>
-                                    <span class="rating-score">4.9</span>
-                                </div>
-                                <span class="rating-count">(94 avaliações)</span>
-                            </div>
-                            <button class="btn-review" data-dish-id="2" data-dish-name="Estrogonofe de Grão de Bico">
-                                <i data-lucide="message-square-plus"></i>
-                                <span>Avaliar</span>
-                            </button>
-                        </div>
-                    </article>
-
-                    <article class="dish-card" data-dish-id="3">
-                        <div class="dish-header">
-                            <span class="badge badge-side">Acompanhamentos</span>
-                        </div>
-
-                        <h3 class="dish-name">Arroz Branco, Feijão Caseiro e Macarrão</h3>
-                        <p class="dish-description">Arroz agulhinha soltinho, feijão carioca temperado com alho e louro
-                            e macarrão al dente.</p>
-
-                        <div class="dish-footer">
-                            <div class="dish-rating">
-                                <div class="stars">
-                                    <i data-lucide="star" class="filled"></i>
-                                    <span class="rating-score">4.5</span>
-                                </div>
-                                <span class="rating-count">(76 avaliações)</span>
-                            </div>
-                            <button class="btn-review" data-dish-id="3"
-                                data-dish-name="Acompanhamentos (Arroz, Feijão e Macarrão)">
-                                <i data-lucide="message-square-plus"></i>
-                                <span>Avaliar</span>
-                            </button>
-                        </div>
-                    </article>
-
-                    <article class="dish-card" data-dish-id="4">
-                        <div class="dish-header">
-                            <span class="badge badge-dessert">Salada & Sobremesa</span>
-                        </div>
-
-                        <h3 class="dish-name">Salada Tropical & Melancia</h3>
-                        <p class="dish-description">Alface, tomate, cenoura ralada e milho. Sobremesa: Fatia de melancia
-                            fresca. Suco: Caju.</p>
-
-                        <div class="dish-footer">
-                            <div class="dish-rating">
-                                <div class="stars">
-                                    <i data-lucide="star" class="filled"></i>
-                                    <span class="rating-score">4.6</span>
-                                </div>
-                                <span class="rating-count">(62 avaliações)</span>
-                            </div>
-                            <button class="btn-review" data-dish-id="4" data-dish-name="Salada Tropical & Sobremesa">
-                                <i data-lucide="message-square-plus"></i>
-                                <span>Avaliar</span>
-                            </button>
-                        </div>
-                    </article>
-
                 </div>
             </section>
 
