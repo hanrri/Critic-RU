@@ -299,11 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function renderEvaluations() {
     const dayData = dateData[currentDate] || dateData['2026-07-29'];
-
-    if (selectedDateTitle) {
-      selectedDateTitle.textContent = dayData.formattedDate || currentDate;
-    }
-
     const mealRusData = dayData[currentMeal] || dayData['almoco'];
     const ruKeys = Object.keys(mealRusData);
 
@@ -312,13 +307,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ruEvaluationsGrid.innerHTML = ruKeys.map(ruKey => {
       const ru = mealRusData[ruKey];
       return `
-        <article class="ru-eval-card" style="background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 18px; margin-bottom: 20px; box-shadow: var(--shadow-sm);">
+        <article class="ru-eval-card" style="background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border-color); padding: 18px; margin-bottom: 16px; box-shadow: var(--shadow-sm);">
           
-          <!-- Topo do RU com Nome e Nota Média Geral do Dia -->
+          <!-- Topo do RU com Nome Único e Nota Média Geral do Dia -->
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border-color);">
             <div>
-              <span style="font-size: 11px; font-weight: 700; color: var(--primary); text-transform: uppercase;">${ruKey.toUpperCase()}</span>
-              <h3 style="font-size: 17px; font-weight: 800; color: var(--text-main); margin-top: 2px;">${ru.name}</h3>
+              <h3 style="font-size: 17px; font-weight: 800; color: var(--text-main); margin: 0;">${ru.name}</h3>
             </div>
 
             <div style="text-align: right;">
@@ -326,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <i data-lucide="star" style="width: 16px; height: 16px; fill: var(--accent-star);"></i>
                 <span style="font-size: 16px; font-weight: 800; color: var(--text-main);">${ru.score}</span>
               </div>
-              <span style="font-size: 10px; color: var(--text-muted); font-weight: 600;">(${ru.count} avaliações no dia)</span>
+              <span style="font-size: 10px; color: var(--text-muted); font-weight: 600;">(${ru.count} avaliações)</span>
             </div>
           </div>
 
@@ -335,31 +329,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="badge badge-protein" style="font-size: 10px; font-weight: 700;">Proteína: ${ru.protein}</span>
             <p style="font-size: 12px; color: var(--text-main); margin-top: 6px; font-weight: 600;">🌱 Vegetariano: ${ru.veggie}</p>
             <p style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">🍚 Acompanhamentos: ${ru.side} • 🥗 Sobremesa: ${ru.dessert}</p>
-          </div>
-
-          <!-- Comentários e Avaliações de Destaque no Dia -->
-          <div style="margin-bottom: 14px;">
-            <h4 style="font-size: 12px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; display: flex; align-items: center; gap: 4px;">
-              <i data-lucide="message-square" style="width: 14px; height: 14px;"></i>
-              <span>Avaliações dos Alunos Neste Dia</span>
-            </h4>
-
-            <div style="display: flex; flex-direction: column; gap: 8px;">
-              ${ru.highlights.map(item => `
-                <div style="background: #ffffff; border-radius: var(--radius-md); padding: 10px 12px; border: 1px solid var(--border-color);">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                    <span style="font-size: 12px; font-weight: 700; color: var(--text-main);">${item.author}</span>
-                    <span style="font-size: 11px; color: var(--accent-star); font-weight: 800;">⭐ ${item.stars}.0</span>
-                  </div>
-                  <p style="font-size: 12px; color: var(--text-muted); line-height: 1.3;">"${item.text}"</p>
-                  <div style="display: flex; justify-content: flex-end; align-items: center; margin-top: 6px;">
-                    <span style="font-size: 11px; color: var(--text-muted); font-weight: 600; display: inline-flex; align-items: center; gap: 4px;">
-                      <i data-lucide="thumbs-up" style="width: 12px; height: 12px;"></i> ${item.likes} curtidas
-                    </span>
-                  </div>
-                </div>
-              `).join('')}
-            </div>
           </div>
 
           <!-- Botão para Ver Cardápio & Todas as Avaliações -->
