@@ -178,8 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const ruMenuItemsList = document.getElementById('ru-menu-items-list');
 
   if (ruDetailTitle) ruDetailTitle.textContent = ruData.name;
-  if (ruDetailScore) ruDetailScore.textContent = `${ruData.score} ⭐`;
-  if (ruDetailCount) ruDetailCount.textContent = `${ruData.count} avaliações`;
+  if (ruDetailScore) ruDetailScore.textContent = ruData.score;
+  if (ruDetailCount) ruDetailCount.textContent = `(${ruData.count} avaliações)`;
 
   // Renderizar itens do Cardápio Completo
   if (ruMenuItemsList && ruData.dishes) {

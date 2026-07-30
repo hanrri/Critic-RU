@@ -2315,60 +2315,74 @@ input:checked + .slider:before {
   background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
   color: #ffffff;
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 16px 18px;
   margin-bottom: 20px;
   box-shadow: var(--shadow-md);
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 16px;
+  align-items: center;
+  gap: 12px;
 }
 
-.ru-detail-badge {
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.8);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.ru-detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
 }
 
 .ru-detail-title {
-  font-size: 24px;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 4px 0 2px 0;
-}
-
-.ru-detail-sub {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.ru-detail-stats {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-.stat-box {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  padding: 8px 12px;
-  border-radius: var(--radius-md);
-  text-align: right;
-}
-
-.stat-score {
   font-size: 18px;
   font-weight: 800;
-  color: #fef08a;
-  display: block;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+  word-break: break-word;
 }
 
-.stat-count {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.9);
+.ru-rating-inline {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ru-star-icon {
+  width: 15px;
+  height: 15px;
+  color: #fef08a;
+  fill: #fef08a;
+}
+
+.ru-rating-val {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fef08a;
+}
+
+.ru-rating-cnt {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.ru-status-pill {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-weight: 700;
+  font-size: 11px;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.ru-status-pill svg {
+  width: 13px;
+  height: 13px;
 }
 
 .ru-menu-items-list {
